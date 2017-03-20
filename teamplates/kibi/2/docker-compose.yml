@@ -1,11 +1,11 @@
-kibana-vip:
+kibi-vip:
   ports:
   - "${public_port}:80"
   restart: always
   tty: true
   image: rancher/load-balancer-service
   links:
-  - nginx-proxy:kibana4
+  - nginx-proxy:kibi4
   stdin_open: true
 nginx-proxy-conf:
   image: rancher/nginx-conf:v0.2.0
@@ -18,13 +18,13 @@ nginx-proxy:
     - nginx-proxy-conf
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: nginx-proxy-conf,kibana4
+    io.rancher.sidekicks: nginx-proxy-conf,kibi4
   external_links:
     - ${elasticsearch_source}:elasticsearch
-kibana4:
+kibi4:
   restart: always
   tty: true
-  image: kibana:4.6.3
+  image: qxip/docker-kibi
   net: "container:nginx-proxy"
   stdin_open: true
   environment:
