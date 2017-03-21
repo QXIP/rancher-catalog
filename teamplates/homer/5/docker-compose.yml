@@ -1,0 +1,101 @@
+
+homer-vip:
+  ports:
+  - "${public_port}:80"
+  restart: always
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - nginx-proxy:webapp
+  stdin_open: true
+nginx-proxy-conf:
+  image: rancher/nginx-conf:v0.2.0
+  command: "-backend=rancher --prefix=/2017-04-01"
+  labels:
+    io.rancher.container.hostname_override: container_name
+nginx-proxy:
+  image: rancher/nginx:v1.9.4-3
+  volumes_from:
+    - nginx-proxy-conf
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: nginx-proxy-conf,webapp
+
+webapp:
+  container_name: homer-webapp
+  build: ./webapp/.
+  image: sipcapture/homer-webapp
+  ports:
+    - "${public_port}:80"
+  depends_on:
+    - mysql
+  volumes:
+    - /homer-api/
+    - homer-data-semaphore:/homer-semaphore/
+    - homer-data-dashboard:/var/www/html/store/dashboard/
+  links:
+    - "mysql:mysql"
+  env_file:
+    - ./homer.env
+  restart: always
+# --------------------------------------------- cron container
+cron:
+  container_name: homer-cron
+  build: ./cron/.
+  image: sipcapture/homer-cron
+  depends_on:
+    - mysql
+  volumes:
+    - homer-data-semaphore:/homer-semaphore/
+  links:
+    - "mysql:mysql"
+  env_file:
+    - ./homer.env
+  restart: always
+# --------------------------------------------- Kamailio container
+kamailio:
+  container_name: homer-kamailio
+  build: ./kamailio/.
+  image: sipcapture/homer-kamailio
+  ports:
+    - "${public_port}:9060/udp"
+  depends_on:
+    - mysql
+  links:
+    - "mysql:mysql"
+  volumes:
+    - homer-data-semaphore:/homer-semaphore/
+  env_file:
+    - ./homer.env
+  restart: always
+# --------------------------------------------- Data bootstrapping container
+bootstrap:
+  container_name: bootstrap-mysql
+  image: mysql:5.6
+  depends_on:
+    - mysql
+    - webapp
+  links:
+    - "mysql:mysql"
+  volumes_from:
+    - webapp
+  volumes:
+    - homer-data-semaphore:/homer-semaphore/
+    - ./bootstrap-data/bootstrap.sh:/bootstrap.sh
+  entrypoint:
+    - /bootstrap.sh
+  env_file:
+    - ./homer.env
+# --------------------------------------------- MySQL container.
+mysql:
+  container_name: mysql
+  image: mysql:5.6
+  volumes:
+    - ./mysql/run.sh:/run.sh
+    - homer-data-semaphore:/homer-semaphore/
+    - homer-data-mysql:/var/lib/mysql
+  entrypoint:
+    - /run.sh
+  env_file:
+    - ./homer.env
+  restart: always
