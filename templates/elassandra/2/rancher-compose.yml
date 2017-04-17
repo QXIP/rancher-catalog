@@ -5,7 +5,7 @@
     (Experimental) Strapdata Elassandra
   minimum_rancher_version: v2.4.2
   maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
-  uuid: elassandra-0
+  uuid: elassandra-2
   questions:
     - variable: "cluster_name"
       description: "Cluster to participate in (no spaces)"
@@ -13,8 +13,7 @@
       required: true
       default: "cluster01"
       type: "string"
-
-cassandra:
+elassandra:
   scale: 1
   retain_ip: true
   health_check:
