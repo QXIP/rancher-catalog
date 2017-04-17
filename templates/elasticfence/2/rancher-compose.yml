@@ -5,12 +5,6 @@
   maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
   uuid: elasticfence-2
   questions:
-    - variable: "cluster_name"
-      description: "Cluster to participate in (no spaces)"
-      label: "Cluster Name:"
-      required: true
-      default: "cluster01"
-      type: "string"
     - variable: "public_port"
       label: "ES Public Port"
       description: "Unique public port for ES API"
@@ -23,6 +17,3 @@
       type: "int"
       default: 5606
       required: true
-elasticfence:
-  scale: 1
-  retain_ip: false
