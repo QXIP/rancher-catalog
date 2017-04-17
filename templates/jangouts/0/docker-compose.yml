@@ -1,0 +1,15 @@
+janus:
+  image: qxip/docker-jangouts
+  ports:
+  - "7889:7889"
+  - "7089:7089"
+  - "8089:8089"
+  - "7088:7088"
+  - "8088:8088"
+  - "8000:8000"
+  - "8080:8080"
+  - "10000-10200/udp:10000-10200/udp"
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
