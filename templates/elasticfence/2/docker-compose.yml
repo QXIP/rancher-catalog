@@ -1,15 +1,8 @@
-kibana-vip:
+elasticfence:
+  image: qxip/docker-elasticfence
   ports:
   - "${public_port}:9200"
   - "${public_port}:5606"
-  restart: always
-  tty: true
-  image: rancher/load-balancer-service
-  links:
-  - elasticfence
-  stdin_open: true
-elasticfence:
-  image: qxip/docker-elasticfence
   volumes_from:
   - elasticfence-volume
   restart: always
