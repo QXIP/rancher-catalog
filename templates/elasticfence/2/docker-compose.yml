@@ -10,13 +10,3 @@ elasticfence:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticfence-volume
-elasticfence-volume:
-  net: none
-  labels:
-    io.rancher.container.hostname_override: container_name
-    io.rancher.container.start_once: true
-  volumes:
-  - /usr/share/elasticsearch
-  - /opt/kibi/config
-  entrypoint: /bin/true
-  image: busybox
