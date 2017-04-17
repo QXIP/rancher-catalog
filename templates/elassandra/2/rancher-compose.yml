@@ -11,6 +11,12 @@
       required: true
       default: "cluster01"
       type: "string"
+    - variable: "public_port"
+      label: "Public Port"
+      description: "Unique public port for ES API"
+      type: "int"
+      default: 9200
+      required: true
 elassandra:
   scale: 1
   retain_ip: true
