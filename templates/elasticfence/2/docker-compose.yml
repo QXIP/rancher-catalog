@@ -2,7 +2,7 @@ elasticfence:
   image: qxip/docker-elasticfence
   ports:
   - "${public_port}:9200"
-  - "${public_port}:5606"
+  - "${kibi_port}:5606"
   volumes_from:
   - elasticfence-volume
   restart: always
