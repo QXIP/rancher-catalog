@@ -25,11 +25,4 @@
       required: true
 elasticfence:
   scale: 1
-  retain_ip: true
-  health_check:
-    port: 9200
-    interval: 2000
-    initializing_timeout: 3600000
-    unhealthy_threshold: 5
-    strategy: recreate
-    response_timeout: 2000
+  retain_ip: false
