@@ -14,7 +14,8 @@ elassandra-volume:
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
   volumes:
-    "/var/lib/cassandra"
+    - /var/lib/cassandra
+    - /var/log/cassandra
   volume_driver: "${volume_driver}"
   entrypoint: /bin/true
   image: busybox
