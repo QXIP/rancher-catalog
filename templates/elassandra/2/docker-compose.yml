@@ -3,8 +3,6 @@ elassandra:
   image: strapdata/elassandra
   volumes_from:
   - elassandra-volume
-  environment:
-  - CATTLE_SCRIPT_DEBUG: ${debug}
   ports:
   - ${public_port}:9200
   labels:
