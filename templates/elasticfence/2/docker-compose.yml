@@ -1,7 +1,7 @@
 elasticfence:
   image: qxip/docker-elasticfence
   volumes_from:
-  - elassandra-volume
+  - elasticfence-volume
   ports:
   - ${public_port}:9200
   - ${kibi_port}:5606
