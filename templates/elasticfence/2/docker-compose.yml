@@ -1,0 +1,22 @@
+elasticfence:
+  image: qxip/docker-elasticfence
+  volumes_from:
+  - elassandra-volume
+  ports:
+  - ${public_port}:9200
+  - ${kibi_port}:5606
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elassandra-volume
+elasticfence-volume:
+  net: none
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+  - /usr/share/elasticsearch
+  - /opt/kibi/config
+  entrypoint: /bin/true
+  image: busybox
