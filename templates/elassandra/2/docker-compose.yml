@@ -3,7 +3,7 @@ elassandra:
   volumes_from:
   - elassandra-volume
   ports:
-  - "${public_port}:9200"
+  - ${public_port}:9200
   restart: always
   tty: true
   labels:
