@@ -3,8 +3,6 @@ elasticfence:
   ports:
   - "${public_port}:9200"
   - "${kibi_port}:5606"
-  volumes_from:
-  - elasticfence-volume
   restart: always
   tty: true
   labels:
