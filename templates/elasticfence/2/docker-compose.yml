@@ -9,7 +9,7 @@ elasticfence:
   tty: true
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: elassandra-volume
+    io.rancher.sidekicks: elasticfence-volume
 elasticfence-volume:
   net: none
   labels:
