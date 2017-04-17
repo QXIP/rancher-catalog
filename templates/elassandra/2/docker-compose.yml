@@ -4,7 +4,7 @@ elassandra:
   volumes_from:
   - elassandra-volume
   ports:
-  - ${public_port}:9200
+    - "${public_port}:9200"
   labels:
     io.rancher.scheduler.affinity:host_label: ${host_label}
     io.rancher.container.hostname_override: container_name
@@ -16,7 +16,7 @@ elassandra-volume:
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
   volumes:
-  - ${volume_work}:/var/lib/cassandra
-  volume_driver: ${volume_driver}
+  - "${volume_work}:/var/lib/cassandra"
+  volume_driver: "${volume_driver}"
   entrypoint: /bin/true
   image: busybox
