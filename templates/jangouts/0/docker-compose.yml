@@ -13,3 +13,6 @@ janus:
   tty: true
   labels:
     io.rancher.container.hostname_override: container_name
+  environment:
+  - DOMAIN_NAME="${domain_name}"
+  - PUBLIC_PORT="${public_port}"
