@@ -1,0 +1,13 @@
+.catalog:
+  name: "NFS Server"
+  version: "latest"
+  description: |
+    "Generic Docker NFS Server"
+  uuid: docker-nfserver-0
+  questions:
+    - variable: "HOST_LABEL"
+      label: "Host label"
+      description: "Specify a Rancher host label here that will be used to determine where this container will be shipped."
+      type: "string"
+      default: role=apps
+      required: true

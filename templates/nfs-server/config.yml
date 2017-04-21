@@ -1,0 +1,5 @@
+name: nfs-server
+description: |
+  Docker NFS Server
+version: latest
+category: "Storage"
