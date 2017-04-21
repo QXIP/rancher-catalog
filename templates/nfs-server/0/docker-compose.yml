@@ -1,5 +1,6 @@
 docker-nfs:
  image: cpuguy83/nfs-server
+ restart: always
  privileged: true
  volumes:
  - /exports

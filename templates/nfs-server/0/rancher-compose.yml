@@ -4,6 +4,7 @@
   description: |
     "Generic Docker NFS Server"
   uuid: docker-nfserver-0
+  scale: 1
   questions:
     - variable: "HOST_LABEL"
       label: "Host label"
