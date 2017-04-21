@@ -5,5 +5,3 @@ docker-nfs:
  - /exports
  command:
  - /exports
- - /etc/services:/etc/services
-
