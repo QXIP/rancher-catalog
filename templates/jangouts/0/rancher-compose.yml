@@ -17,7 +17,7 @@
       type: "string"
       default: ""
       required: true
-    - variable: "rtp_range"
+    - variable: "port_range"
       label: "RTP Portrange"
       description: "Port Range for RTP Service"
       type: "string"
