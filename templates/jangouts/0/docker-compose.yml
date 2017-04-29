@@ -19,7 +19,7 @@ janus:
   - "8088:8088"
   - "8000:8000"
   - "8080:8080"
-  - "10000-10200:10000-10200/udp"
+  - "${port_range}:${port_range}/udp"
   restart: always
   tty: true
   labels:
@@ -27,3 +27,4 @@ janus:
   environment:
   - DOMAIN_NAME: ${domain_name}
   - PUBLIC_PORT: ${public_port}
+  - PORT_RANGE: ${port_range}
