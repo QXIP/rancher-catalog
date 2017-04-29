@@ -23,3 +23,9 @@
       type: "string"
       default: "10000-10200"
       required: true
+    - variable: "evapi_url"
+      label: "Event API URL"
+      description: "Event API URL"
+      type: "string"
+      default: ""
+      required: false
