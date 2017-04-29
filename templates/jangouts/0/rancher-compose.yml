@@ -3,7 +3,7 @@
   version: "0.2.3-rancher1"
   description: "Jangouts (Janus Hangouts)"
   maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
-  uuid: janus-0
+  uuid: jangouts-0
   questions:
     - variable: "public_port"
       label: "Public Port"
@@ -16,4 +16,10 @@
       description: "Domain Name for Service"
       type: "string"
       default: ""
+      required: true
+    - variable: "rtp_range"
+      label: "RTP Portrange"
+      description: "Port Range for RTP Service"
+      type: "string"
+      default: "10000-10200"
       required: true
