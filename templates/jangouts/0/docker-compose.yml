@@ -28,3 +28,4 @@ janus:
   - DOMAIN_NAME: ${domain_name}
   - PUBLIC_PORT: ${public_port}
   - PORT_RANGE: ${port_range}
+  - EVAPI_URL: ${evapi_url}
