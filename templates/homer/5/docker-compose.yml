@@ -33,10 +33,10 @@ webapp:
   links:
     - "mysql:mysql"
   environment:
-    - DB_USER:${DB_USER}
-    - DB_PASS:${DB_PASS}
-    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
-    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
+    - "DB_USER:${DB_USER}"
+    - "DB_PASS:${DB_PASS}"
+    - "MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}"
+    - "USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}"
   restart: always
 # --------------------------------------------- cron container
 cron:
@@ -47,10 +47,10 @@ cron:
   links:
     - "mysql:mysql"
   environment:
-    - DB_USER:${DB_USER}
-    - DB_PASS:${DB_PASS}
-    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
-    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
+    - "DB_USER:${DB_USER}"
+    - "DB_PASS:${DB_PASS}"
+    - "MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}"
+    - "USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}"
   restart: always
 # --------------------------------------------- Kamailio container
 kamailio:
@@ -63,10 +63,10 @@ kamailio:
   volumes:
     - homer-data-semaphore:/homer-semaphore/
   environment:
-    - DB_USER:${DB_USER}
-    - DB_PASS:${DB_PASS}
-    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
-    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
+    - "DB_USER:${DB_USER}"
+    - "DB_PASS:${DB_PASS}"
+    - "MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}"
+    - "USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}"
   restart: always
 # --------------------------------------------- Data bootstrapping container
 bootstrap:
@@ -82,14 +82,14 @@ bootstrap:
   entrypoint:
     - /bootstrap.sh
   environment:
-    - DB_USER:${DB_USER}
-    - DB_PASS:${DB_PASS}
-    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
-    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
+    - "DB_USER:${DB_USER}"
+    - "DB_PASS:${DB_PASS}" 
+    - "MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}"
+    - "USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}"
 # --------------------------------------------- MySQL container.
 mysql:
   container_name: mysql
-  image: mysql:5.6
+  image: mysql:5.7
   volumes:
     - ./mysql/run.sh:/run.sh
     - homer-data-semaphore:/homer-semaphore/
@@ -97,8 +97,8 @@ mysql:
   entrypoint:
     - /run.sh
   environment:
-    - DB_USER:${DB_USER}
-    - DB_PASS:${DB_PASS}
-    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
-    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
+    - "DB_USER:${DB_USER}"
+    - "DB_PASS:${DB_PASS}"
+    - "MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}"
+    - "USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}"
   restart: always
