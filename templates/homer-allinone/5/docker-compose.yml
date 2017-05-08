@@ -1,15 +1,8 @@
-homer-vip:
-  image: rancher/load-balancer-service
-  ports:
-  - "${public_port}:80"
-  links:
-  - homer5
-  labels:
-    io.rancher.loadbalancer.target.homer5: ${domain_name}:${public_port}/homer5=80
 homer5:
   restart: always
-  image: sipcapture/homer-docker
+  image: sipcapture/homer-docker:latest
   ports:
+  - "${public_port}:80"
   - "${hep_port}:9060/udp"
   labels:
     io.rancher.container.hostname_override: container_name
