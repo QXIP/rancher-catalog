@@ -23,7 +23,6 @@ nginx-proxy:
 
 webapp:
   container_name: homer-webapp
-  build: ./webapp/.
   image: sipcapture/homer-webapp
   ports:
     - "${public_port}:80"
@@ -42,7 +41,6 @@ webapp:
 # --------------------------------------------- cron container
 cron:
   container_name: homer-cron
-  build: ./cron/.
   image: sipcapture/homer-cron
   volumes:
     - homer-data-semaphore:/homer-semaphore/
@@ -57,7 +55,6 @@ cron:
 # --------------------------------------------- Kamailio container
 kamailio:
   container_name: homer-kamailio
-  build: ./kamailio/.
   image: sipcapture/homer-kamailio
   ports:
     - "${public_port}:9060/udp"
