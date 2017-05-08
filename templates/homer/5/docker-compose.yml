@@ -27,8 +27,6 @@ webapp:
   image: sipcapture/homer-webapp
   ports:
     - "${public_port}:80"
-  depends_on:
-    - mysql
   volumes:
     - /homer-api/
     - homer-data-semaphore:/homer-semaphore/
@@ -43,8 +41,6 @@ cron:
   container_name: homer-cron
   build: ./cron/.
   image: sipcapture/homer-cron
-  depends_on:
-    - mysql
   volumes:
     - homer-data-semaphore:/homer-semaphore/
   links:
@@ -59,8 +55,6 @@ kamailio:
   image: sipcapture/homer-kamailio
   ports:
     - "${public_port}:9060/udp"
-  depends_on:
-    - mysql
   links:
     - "mysql:mysql"
   volumes:
@@ -72,9 +66,6 @@ kamailio:
 bootstrap:
   container_name: bootstrap-mysql
   image: mysql:5.6
-  depends_on:
-    - mysql
-    - webapp
   links:
     - "mysql:mysql"
   volumes_from:
