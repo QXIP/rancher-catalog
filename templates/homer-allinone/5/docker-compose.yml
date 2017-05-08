@@ -1,22 +1,17 @@
 homer-vip:
   image: rancher/load-balancer-service
   ports:
-  # HTTPS mandatory for webRTC!
   - "${public_port}:80"
-  - "${hep_port}:9060"
   links:
   - homer5
-  external_links:
   labels:
     io.rancher.loadbalancer.target.homer5: ${domain_name}:${public_port}/homer5=80
 homer5:
   restart: always
   tty: true
   image: qxip/homer-docker
-  net: "container:nginx-proxy"
+  ports:
+  - "${hep_port}:9060/udp"
   stdin_open: true
-  environment:
-    DB_USER: "${DB_USER}"
-    DB_PASS: "${DB_PASS}"
   labels:
     io.rancher.container.hostname_override: container_name
