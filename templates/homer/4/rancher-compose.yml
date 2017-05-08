@@ -1,0 +1,24 @@
+.catalog:
+  name: "Homer"
+  version: "5.0.5-AllInOne"
+  description: "Homer: VoIP Monitoring & Capture"
+  questions:
+    - variable: "public_port"
+      label: "Public Port"
+      description: "Unique public port for WebApp"
+      type: "int"
+      default: 8080
+      required: true
+    - variable: "hep_port"
+      label: "Public HEP Port"
+      description: "Unique public HEP port for Kamailio"
+      type: "int"
+      default: 9060
+      required: true
+      
+nginx-proxy:
+  metadata:
+    nginx:
+      conf:
+        servername: "homer"
+        upstream_port: 8080
