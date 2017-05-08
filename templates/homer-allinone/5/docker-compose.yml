@@ -8,10 +8,8 @@ homer-vip:
     io.rancher.loadbalancer.target.homer5: ${domain_name}:${public_port}/homer5=80
 homer5:
   restart: always
-  tty: true
   image: sipcapture/homer-docker
   ports:
   - "${hep_port}:9060/udp"
-  stdin_open: true
   labels:
     io.rancher.container.hostname_override: container_name
