@@ -9,7 +9,7 @@ homer-vip:
 homer5:
   restart: always
   tty: true
-  image: qxip/homer-docker
+  image: sipcapture/homer-docker
   ports:
   - "${hep_port}:9060/udp"
   stdin_open: true
