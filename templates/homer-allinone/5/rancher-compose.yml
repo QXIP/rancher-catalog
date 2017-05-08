@@ -15,10 +15,3 @@
       type: "int"
       default: 9060
       required: true
-      
-nginx-proxy:
-  metadata:
-    nginx:
-      conf:
-        servername: "homer"
-        upstream_port: 80
