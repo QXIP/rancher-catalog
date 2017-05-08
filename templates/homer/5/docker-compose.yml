@@ -33,8 +33,11 @@ webapp:
     - homer-data-dashboard:/var/www/html/store/dashboard/
   links:
     - "mysql:mysql"
-  env_file:
-    - ./homer.env
+  environment:
+    - DB_USER:${DB_USER}
+    - DB_PASS:${DB_PASS}
+    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
   restart: always
 # --------------------------------------------- cron container
 cron:
@@ -45,8 +48,11 @@ cron:
     - homer-data-semaphore:/homer-semaphore/
   links:
     - "mysql:mysql"
-  env_file:
-    - ./homer.env
+  environment:
+    - DB_USER:${DB_USER}
+    - DB_PASS:${DB_PASS}
+    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
   restart: always
 # --------------------------------------------- Kamailio container
 kamailio:
@@ -59,8 +65,11 @@ kamailio:
     - "mysql:mysql"
   volumes:
     - homer-data-semaphore:/homer-semaphore/
-  env_file:
-    - ./homer.env
+  environment:
+    - DB_USER:${DB_USER}
+    - DB_PASS:${DB_PASS}
+    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
   restart: always
 # --------------------------------------------- Data bootstrapping container
 bootstrap:
@@ -75,8 +84,11 @@ bootstrap:
     - ./bootstrap-data/bootstrap.sh:/bootstrap.sh
   entrypoint:
     - /bootstrap.sh
-  env_file:
-    - ./homer.env
+  environment:
+    - DB_USER:${DB_USER}
+    - DB_PASS:${DB_PASS}
+    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
 # --------------------------------------------- MySQL container.
 mysql:
   container_name: mysql
@@ -87,6 +99,9 @@ mysql:
     - homer-data-mysql:/var/lib/mysql
   entrypoint:
     - /run.sh
-  env_file:
-    - ./homer.env
+  environment:
+    - DB_USER:${DB_USER}
+    - DB_PASS:${DB_PASS}
+    - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+    - USE_REMOTE_MYSQL:${USE_REMOTE_MYSQL}
   restart: always
