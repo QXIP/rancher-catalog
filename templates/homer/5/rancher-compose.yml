@@ -15,7 +15,31 @@
       type: "int"
       default: 9060
       required: true
-
+    - variable: "DB_USER"
+      label: "DB User"
+      description: "DB Username"
+      type: "string"
+      default: "homer_user"
+      required: true
+    - variable: "DB_PASS"
+      label: "DB Password"
+      description: "DB Password"
+      type: "string"
+      default: "homer_password"
+      required: true
+    - variable: "MYSQL_ROOT_PASSWORD"
+      label: "DB Root Password"
+      description: "MYSQL_ROOT_PASSWORD"
+      type: "string"
+      default: "secret"
+      required: true
+    - variable: "USE_REMOTE_MYSQL"
+      label: "Use Remote MySQL (true/false)"
+      description: "USE_REMOTE_MYSQL"
+      type: "string"
+      default: "false"
+      required: true
+      
 nginx-proxy:
   metadata:
     nginx:
