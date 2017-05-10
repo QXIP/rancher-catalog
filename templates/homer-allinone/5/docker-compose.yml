@@ -1,6 +1,6 @@
 homer5:
   restart: always
-  image: sipcapture/homer-docker
+  image: sipcapture/homer-docker:master
   ports:
   - "${public_port}:80"
   - "${hep_port}:9060/udp"
