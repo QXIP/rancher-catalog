@@ -1,0 +1,16 @@
+cassandra:
+  environment:
+    RANCHER_ENABLE: 'true'
+    CASSANDRA_CONFIG_SERVER: "${cassandra_config_server}"
+    CLUSTER_NAME: "${cluster_name}"
+    NUM_TOKENS: ${num_tokens}
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: rexray=true
+    io.rancher.container.hostname_override: container_name
+  image: cassandra:3.1
+  tty: true
+  volumes:
+  - /var/lib/cassandra
+  volume_driver: rexray

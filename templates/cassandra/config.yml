@@ -1,0 +1,5 @@
+name: Cassandra Node
+description: |
+  Cassandra Cluster Node
+version: v0.1.0-rancher1
+category: Databases
