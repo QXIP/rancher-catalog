@@ -1,0 +1,17 @@
+.catalog:
+  name: "Homer"
+  version: "5.0.5-AllInOne"
+  description: "Homer: VoIP Monitoring & Capture"
+  questions:
+    - variable: "public_port"
+      label: "Public Port"
+      description: "Unique public port for WebApp"
+      type: "int"
+      default: 80
+      required: true
+    - variable: "hep_port"
+      label: "Public HEP Port"
+      description: "Unique public HEP port for OpenSIPS"
+      type: "int"
+      default: 9060
+      required: true

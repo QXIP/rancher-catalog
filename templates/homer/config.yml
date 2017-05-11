@@ -1,4 +1,4 @@
 name: "HOMER 5"
-description: "VoIP Monitoring & Capture"
+description: "VoIP Monitoring & Capture (Kamailio-based)"
 version: "5.0.5-rancher1"
 category: Monitoring
