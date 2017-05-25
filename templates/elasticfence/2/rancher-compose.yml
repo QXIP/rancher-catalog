@@ -17,3 +17,15 @@
       type: "int"
       default: 5606
       required: true
+    - variable: "days"
+      label: "Rotation Days"
+      description: "Delete Indices after X days"
+      type: "int"
+      default: 7
+      required: true
+     - variable: "interval"
+      label: "Rotation Interval (hours)"
+      description: "Rotate Indices every X hours"
+      type: "int"
+      default: 24
+      required: true
