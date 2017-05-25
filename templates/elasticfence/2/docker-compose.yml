@@ -1,25 +1,23 @@
-version: '2'
-services:
-  ES-curator:
-    image: elasticfence/docker-curator
-    environment:
-      ELASTICSEARCH_AUTH: "admin:elasticFence"
-      INTERVAL_IN_HOURS: "${interval}"
-      OLDER_THAN_IN_DAYS: "${days}"
-      ELASTICSEARCH_HOST: es1
-    stdin_open: true
-    tty: true
-    links:
-    - elasticfence:es1
-    labels:
-      io.rancher.container.pull_image: always
-      io.rancher.container.hostname_override: container_name
-  elasticfence:
-    image: qxip/docker-elasticfence
-    tty: true
-    ports:
-    - "${public_port}:9200/tcp"
-    - "${kibi_port}:5606/tcp"
-    labels:
-      io.rancher.container.pull_image: always
-      io.rancher.container.hostname_override: container_name
+ES-curator:
+  image: elasticfence/docker-curator
+  environment:
+    ELASTICSEARCH_AUTH: "admin:elasticFence"
+    INTERVAL_IN_HOURS: "${interval}"
+    OLDER_THAN_IN_DAYS: "${days}"
+    ELASTICSEARCH_HOST: es1
+  stdin_open: true
+  tty: true
+  links:
+  - elasticfence:es1
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.hostname_override: container_name
+elasticfence:
+  image: qxip/docker-elasticfence
+  tty: true
+  ports:
+  - "${public_port}:9200/tcp"
+  - "${kibi_port}:5606/tcp"
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.hostname_override: container_name
