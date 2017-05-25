@@ -1,6 +1,6 @@
 .catalog:
   name: "ElasticFence"
-  version: "2.4.1-rancher3"
+  version: "2.4.1-rancher-auth-3"
   description: "Elasticsearch 2.4.1 + Kibi 4.6 + Fence Plugins"
   maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
   uuid: elasticfence-3
