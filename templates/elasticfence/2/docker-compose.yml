@@ -16,8 +16,8 @@ elasticfence:
   image: qxip/docker-elasticfence
   tty: true
   ports:
-  - "${public_port}:9200/tcp"
-  - "${kibi_port}:5606/tcp"
+  - "${public_port}:9200"
+  - "${kibi_port}:5606"
   labels:
     io.rancher.container.pull_image: always
     io.rancher.container.hostname_override: container_name
