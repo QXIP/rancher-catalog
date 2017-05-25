@@ -23,7 +23,7 @@
       type: "int"
       default: 7
       required: true
-     - variable: "interval"
+    - variable: "interval"
       label: "Rotation Interval (hours)"
       description: "Rotate Indices every X hours"
       type: "int"
