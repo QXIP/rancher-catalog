@@ -1,6 +1,6 @@
 .catalog:
   name: "Homer"
-  version: "5.0.5-AllInOne (Kamailio 4)"
+  version: "5.0.5-AllInOne (Debian/Kamailio 4)"
   description: "Homer: VoIP Monitoring & Capture"
   questions:
     - variable: "public_port"
