@@ -1,0 +1,8 @@
+homer5:
+  restart: always
+  image: qxip/homer-docker-devuan:master
+  ports:
+  - "${public_port}:80"
+  - "${hep_port}:9060/udp"
+  labels:
+    io.rancher.container.hostname_override: container_name

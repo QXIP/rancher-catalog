@@ -1,6 +1,6 @@
 .catalog:
   name: "Homer"
-  version: "5.0.5-AllInOne"
+  version: "5.0.5-AllInOne (OpenSIPS)"
   description: "Homer: VoIP Monitoring & Capture"
   questions:
     - variable: "public_port"
