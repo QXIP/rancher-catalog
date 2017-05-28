@@ -13,4 +13,4 @@ cassandra:
   tty: true
   volumes:
   - /var/lib/cassandra
-  volume_driver: rexray
+  volume_driver: rancher-nfs
