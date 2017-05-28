@@ -1,6 +1,6 @@
 homer5:
   restart: always
-  image: qxip/homer-docker-devuan:master
+  image: qxip/homer-docker-devuan:latest
   ports:
   - "${public_port}:80"
   - "${hep_port}:9060/udp"
