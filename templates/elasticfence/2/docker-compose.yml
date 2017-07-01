@@ -13,7 +13,7 @@ ES-curator:
     io.rancher.container.pull_image: always
     io.rancher.container.hostname_override: container_name
 elasticfence:
-  image: qxip/docker-elasticfence
+  image: elasticfence/docker-elasticfence
   tty: true
   ports:
   - "${public_port}:9200"
