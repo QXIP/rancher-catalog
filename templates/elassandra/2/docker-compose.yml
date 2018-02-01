@@ -1,15 +1,75 @@
-elassandra:
-  image: strapdata/elassandra
+elassandra-seed:
+  image: qxip/rancher-elassandra:latest
   volumes_from:
-  - elassandra-volume
+  - elassandra-seed-volume
   ports:
   - ${public_port}:9200
+  environment:
+    CASSANDRA_DC: ${cassandra_dc}
+    CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    CASSANDRA_RACK: ${casandra_rack}
+    RANCHER_ENABLE: 'true'
+    RANCHER_SEED_SERVICE: elassandra-seed
   restart: always
   tty: true
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elassandra-volume
-elassandra-volume:
+elassandra-seed-volume:
+  net: none
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+  - /var/lib/cassandra
+  - /var/log/cassandra
+  entrypoint: /bin/true
+  image: busybox
+
+elassandra-node1:
+  image: qxip/rancher-elassandra:latest
+  volumes_from:
+  - elassandra-node1-volume
+  environment:
+    CASSANDRA_DC: ${cassandra_dc}
+    CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    CASSANDRA_RACK: ${casandra_rack}
+    RANCHER_ENABLE: 'true'
+    RANCHER_SEED_SERVICE: elassandra-seed
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elassandra-node1-volume
+    io.rancher.container.pull_image: always
+elassandra-node1-volume:
+  net: none
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+  - /var/lib/cassandra
+  - /var/log/cassandra
+  entrypoint: /bin/true
+  image: busybox
+
+elassandra-node2:
+  image: qxip/rancher-elassandra:latest
+  volumes_from:
+  - elassandra-node2-volume
+  environment:
+    CASSANDRA_DC: ${cassandra_dc}
+    CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    CASSANDRA_RACK: ${casandra_rack}
+    RANCHER_ENABLE: 'true'
+    RANCHER_SEED_SERVICE: elassandra-seed
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elassandra-node2-volume
+    io.rancher.container.pull_image: always
+elassandra-node2-volume:
   net: none
   labels:
     io.rancher.container.hostname_override: container_name
