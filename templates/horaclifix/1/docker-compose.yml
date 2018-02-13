@@ -1,0 +1,15 @@
+horaclifix:
+  image: qxip/horaclifix-go
+  ports:
+  - ${ipfix_port}:4739
+  environment:
+    HEP_HOST: ${hep_host}
+    HEP_PORT: ${hep_port}
+    GRAYLOG_URL: ${graylog_url}
+    STATSD_URL: ${statsd_url}
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
+

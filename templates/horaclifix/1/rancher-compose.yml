@@ -1,0 +1,35 @@
+.catalog:
+  name: "Horaclifix"
+  version: "1.1.0-rancher1"
+  description: "Oracle/Acme IPFIX to HEP Gateway"
+  maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
+  uuid: horaclifix-1
+  questions:
+    - variable: "hep_host"
+      description: "Remote HEP Socket IP"
+      label: "HEP Host:"
+      required: true
+      default: "homer"
+      type: "string"
+    - variable: "hep_port"
+      label: "HEP Port"
+      description: "Remote HEP Socket Port"
+      type: "int"
+      default: 5601
+      required: true
+    - variable: "ipfix_port"
+      label: "IPFIX Port"
+      description: "Local IPFIX Port"
+      type: "int"
+      default: 4739
+      required: true
+horaclifix:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 4739
+    interval: 2000
+    initializing_timeout: 3600000
+    unhealthy_threshold: 5
+    strategy: recreate
+    response_timeout: 2000

@@ -23,6 +23,12 @@
       type: "int"
       default: 9200
       required: true
+    - variable: "kibana_port"
+      label: "Kibana Port"
+      description: "Unique public port for Kibana UI"
+      type: "int"
+      default: 5601
+      required: true
 elassandra-seed:
   scale: 1
   retain_ip: true

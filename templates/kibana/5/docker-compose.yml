@@ -1,0 +1,12 @@
+elassandra-kibana:
+  image: qxip/kibana-elassandra:master
+  ports:
+  - ${kibana_port}:5601
+  environment:
+    ELASTICSEARCH_URL: ${elasticsearch_url}
+  restart: always
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: always
+

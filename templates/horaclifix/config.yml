@@ -1,0 +1,4 @@
+name: Horaclifix
+description: "Oracle/Acme IPFIX to HEP Gateway"
+version: "1.1.0-rancher1"
+category: HEP

@@ -1,0 +1,29 @@
+.catalog:
+  name: "Kibana"
+  version: "5.5.0-rancher1"
+  description: "Kibana for Elassandra"
+  maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
+  uuid: kibana-elassandra-5
+  questions:
+    - variable: "cassandra_dc"
+      description: "Elasticsearch URL"
+      label: "Elasticsearch:"
+      required: true
+      default: "http://elassandra-seed:9200"
+      type: "string"
+    - variable: "kibana_port"
+      label: "Kibana Port"
+      description: "Unique public port for Kibana UI"
+      type: "int"
+      default: 5601
+      required: true
+elassandra-kibana:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 5601
+    interval: 2000
+    initializing_timeout: 3600000
+    unhealthy_threshold: 5
+    strategy: recreate
+    response_timeout: 2000
