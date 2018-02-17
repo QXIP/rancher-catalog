@@ -1,0 +1,18 @@
+clickhouse-server:
+  image: yandex/clickhouse-server:latest
+  ports:
+  - ${clickhouse_port}:8123
+grafana-storage:
+  image: busybox:latest
+  volumes:
+    - /var/lib/grafana
+grafana:
+  image: grafana/grafana
+  ports:
+   - ${gf_port}:3000
+  volumes_from:
+    - grafana-storage
+  environment:
+    GF_INSTALL_PLUGINS: "grafana-piechart-panel,vertamedia-clickhouse-datasource"
+    GF_SECURITY_ADMIN_USER: ${gf_username}
+    GF_SECURITY_ADMIN_PASSWORD: ${gf_password}

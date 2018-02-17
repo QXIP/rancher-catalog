@@ -1,0 +1,4 @@
+name: Clickhouse 1.1
+description: "ClickHouse Server"
+version: "1.1-clickhouse-rancher1"
+category: Bigdata

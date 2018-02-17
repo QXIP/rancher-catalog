@@ -1,0 +1,53 @@
+.catalog:
+  name: "Clickhouse Grafana"
+  version: "1.1-clickhouse-rancher1"
+  description: "ClickHouse + Grafana"
+  maintainer: "Lorenzo Mangani <lorenzo.mangani@gmail.com>"
+  uuid: clickhouse-grafana-1
+  questions:
+    - variable: "gf_username"
+      description: "Grafana Username"
+      label: "Username:"
+      required: true
+      default: "admin"
+      type: "string"
+    - variable: "gf_password"
+      description: "Grafana Password"
+      label: "Password:"
+      required: true
+      default: "clickhouse"
+      type: "string"
+    - variable: "gf_port"
+      label: "Grafana Port"
+      description: "Unique public port for Grafana UI"
+      type: "int"
+      default: 3000
+      required: true
+    - variable: "clickhouse_port"
+      label: "Clickhouse Port"
+      description: "Clickhouse Server Port"
+      type: "int"
+      default: 8123
+      required: true
+
+clickhouse-server:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 8123
+    interval: 2000
+    initializing_timeout: 3600000
+    unhealthy_threshold: 5
+    strategy: recreate
+    response_timeout: 2000
+
+grafana:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 3000
+    interval: 2000
+    initializing_timeout: 3600000
+    unhealthy_threshold: 5
+    strategy: recreate
+    response_timeout: 2000
