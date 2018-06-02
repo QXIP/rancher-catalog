@@ -21,13 +21,6 @@ spec:
           backend:
             serviceName: "homer-webapp"
             servicePort: 80
-  - host: {{ .Values.ingress.host }}
-    http:
-      paths:
-        - path: {{ default "/" .Values.ingress.path }}
-          backend:
-            serviceName: "chronograf"
-            servicePort: 8888
 {{- if .Values.ingress.tls }}
   tls:
   - hosts:
