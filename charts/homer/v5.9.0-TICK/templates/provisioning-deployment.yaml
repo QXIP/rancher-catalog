@@ -43,7 +43,7 @@ spec:
           echo Chronograf Dashboard push ...;
           curl -i -X POST -H "Content-Type: application/json" http://chronograf:8888/chronograf/v1/dashboards -d @/tmp/homer_dashboard.json
           echo Provisioning completed! Exiting ...;
-          poweroff;
+          exit 0;
         image: alpine:latest
         name: provisioning
         resources: {}
