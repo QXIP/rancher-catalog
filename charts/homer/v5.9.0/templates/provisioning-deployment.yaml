@@ -26,7 +26,8 @@ spec:
           echo Waiting for influxdb API ...;
           while ! nc -z influxdb 8086;
           do
-            sleep 1;
+            sleep 2;
+            echo "Trying...";
           done;
           echo InfluxDB Retention Policy push ...;
           curl -G http://influxdb:8086/query --data-urlencode 'q=CREATE DATABASE homer'
@@ -47,9 +48,9 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /tmp
-          name: homer-chrono-dashboard
+          name: homer-dashboard-config
       volumes:
-      - name: homer-chrono-dashboard
+      - name: homer-dashboard-config
         configMap:
           name: homer-chronograf-dashboard
 status: {}
