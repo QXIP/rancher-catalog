@@ -244,8 +244,11 @@ items:
           name: heplify-server
           ports:
           - containerPort: 9060
-          - containerPort: 9060
+	    hostPort: 9060
             protocol: UDP
+          - containerPort: 9060
+	    hostPort: 9060
+            protocol: TCP
           resources: {}
         restartPolicy: Always
   status: {}
