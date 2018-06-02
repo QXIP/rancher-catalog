@@ -11,6 +11,8 @@ metadata:
 spec:
   replicas: 1
   strategy: {}
+  backoffLimit: 1
+  activeDeadlineSeconds: 100
   template:
     metadata:
       creationTimestamp: null
