@@ -297,10 +297,6 @@ items:
           - mountPath: /var/lib/influxdb
             name: influx-data
         restartPolicy: Always
-        volumes:
-        - name: influx-data
-          persistentVolumeClaim:
-            claimName: influx-data
   status: {}
 - apiVersion: v1
   kind: PersistentVolumeClaim

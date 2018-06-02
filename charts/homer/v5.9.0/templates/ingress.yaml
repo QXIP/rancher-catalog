@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: homer-ingress
+  labels:
+    app: homer-ingress
+  annotations:
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+        - path: "/"
+          backend:
+            serviceName: caddy
+            servicePort: 9080
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+        - path: "/"
+          backend:
+            serviceName: caddy
+            servicePort: 9090
