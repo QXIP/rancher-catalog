@@ -40,7 +40,7 @@ spec:
           curl -G http://influxdb:8086/query --data-urlencode 'q=CREATE CONTINUOUS QUERY cq_86400s ON homer RESAMPLE EVERY 1h BEGIN SELECT mean(*) INTO homer."86400s".:MEASUREMENT FROM homer."60s"./.*/ GROUP BY time(1d),* END'
           curl -G http://influxdb:8086/query --data-urlencode 'q=drop retention policy "autogen" ON "homer"'
           echo Chronograf Dashboard push ...;
-          curl -i -X POST -H "Content-Type: application/json" http://chronograf/chronograf/v1/dashboards -d @/tmp/homer_dashboard.json
+          curl -i -X POST -H "Content-Type: application/json" http://chronograf:8888/chronograf/v1/dashboards -d @/tmp/homer_dashboard.json
           echo Provisioning completed! Exiting ...;
           poweroff;
         image: alpine:latest
@@ -48,9 +48,9 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /tmp
-          name: homer-dashboard-config
+          name: homer-chronograf-config
       volumes:
-      - name: homer-dashboard-config
+      - name: homer-chronograf-config
         configMap:
           name: homer-chronograf-dashboard
 status: {}
