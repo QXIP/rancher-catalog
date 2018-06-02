@@ -159,7 +159,6 @@ items:
           ports:
           - containerPort: 8888
             protocol: TCP
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -190,7 +189,6 @@ items:
           image: mariadb:latest
           name: db
           resources: {}
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -243,7 +241,6 @@ items:
             hostPort: 9060
             protocol: TCP
           resources: {}
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -283,7 +280,6 @@ items:
           - name: webapp-config-volume
             configMap:
               name: homer-webapp-config 
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -311,7 +307,6 @@ items:
           resources: {}
           ports:
             - containerPort: 8086
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -341,7 +336,6 @@ items:
           image: kapacitor:1.5-alpine
           name: kapacitor
           resources: {}
-        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
@@ -378,7 +372,6 @@ items:
           - name: telegraf-config-volume
             configMap:
               name: homer-telegraf-config
-        restartPolicy: Always
   status: {}
 kind: List
 metadata: {}
