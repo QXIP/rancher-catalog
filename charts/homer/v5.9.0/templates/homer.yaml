@@ -138,6 +138,7 @@ items:
           resources: {}
           ports:
           - containerPort: 8888
+            protocol: TCP
           volumeMounts:
            - name: telegraf-config-volume
              mountPath: /etc/telegraf
@@ -258,10 +259,10 @@ items:
           name: homer-webapp
           resources: {}
           ports:
-          - containerPort: 80
+            - containerPort: 80
           volumeMounts:
-           - name: webapp-config-volume
-             mountPath: /homer-semaphore
+            - name: webapp-config-volume
+              mountPath: /homer-semaphore
         volumes:
           - name: webapp-config-volume
             configMap:
