@@ -1,6 +1,6 @@
 name: homer
 version: 5.9.0-TICK
-appVersion: 5.9.0-TICK
+appVersion: 5.9.0
 description: Open-Source VoIP and RTC Monitoring
 keywords:
 - homer
@@ -9,6 +9,7 @@ keywords:
 - monitoring
 - troubleshooting
 - capture
+- alerting
 home: https://sipcapture.org
 icon: http://sipcapture.org/images/logos/preloader-logo.png
 sources:
