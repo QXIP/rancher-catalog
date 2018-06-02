@@ -17,6 +17,7 @@ spec:
       labels:
         io.kompose.service: provisioning
     spec:
+      restartPolicy: Never
       containers:
       - args:
         - /bin/sh
