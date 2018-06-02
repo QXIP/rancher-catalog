@@ -199,7 +199,15 @@ items:
           resources: {}
           ports:
           - containerPort: 80
-        restartPolicy: Always
+          volumeMounts:
+           - name: webapp-config-volume
+             mountPath: /homer-semaphore
+        volumes:
+          - name: webapp-config-volume
+            configMap:
+              name: homer-webapp-config
+ 
+       restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
