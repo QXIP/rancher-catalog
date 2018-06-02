@@ -2,9 +2,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ingress
+  name: {{ .Release.Name }}-chronograf-ingress
   labels:
-    app: {{ .Release.Name }}-ingress
+    app: {{ .Release.Name }}-chronograf-ingress
   annotations:
     {{- if .Values.ingress.tls }}
     ingress.kubernetes.io/secure-backends: "true"
