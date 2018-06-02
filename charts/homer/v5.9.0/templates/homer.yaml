@@ -309,6 +309,8 @@ items:
         - image: influxdb:1.5-alpine
           name: influxdb
           resources: {}
+          ports:
+            - containerPort: 8086
         restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
