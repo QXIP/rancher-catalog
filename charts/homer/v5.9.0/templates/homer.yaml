@@ -20,6 +20,9 @@ items:
       port: 9060
       protocol: UDP
       targetPort: 9060
+    - name: "9096"
+      port: 9096
+      targetPort: 9096
     selector:
       io.kompose.service: heplify-server
   status:
