@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  Caddyfile: |
+    # Configuration for influxdb server to send metrics to
+    [[outputs.influxdb]] 
+      urls = ["http://influxdb:8086/"] # required
+      database = "homer" # required
+      retention_policy = ""
+      write_consistency = "any"
+      timeout = "5s"
+      namedrop = ["homer*"]
+    # # Generic socket listener capable of handling multiple socket types.
+     [[inputs.socket_listener]]
+       service_address = "udp://127.0.0.1:8094"
+       data_format = "influx"
+    [[inputs.prometheus]]
+      ## An array of urls to scrape metrics from.
+      urls = ["http://heplify-server:9096/metrics"]
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2018-06-01T14:42:20Z
+  name: telegraf-config
+  namespace: default
+  resourceVersion: "1954038"
+  selfLink: /api/v1/namespaces/default/configmaps/telegraf-config
+  uid: 2ce38933-451a-11e6-8ed8-5254000d0847
