@@ -17,10 +17,3 @@ data:
         tls off
     }
 kind: ConfigMap
-metadata:
-  creationTimestamp: 2018-06-01T14:42:20Z
-  name: caddy-config
-  namespace: default
-  resourceVersion: "1954037"
-  selfLink: /api/v1/namespaces/default/configmaps/caddy-config
-  uid: 2ce38933-451a-11e6-8ed8-5254000d0846
