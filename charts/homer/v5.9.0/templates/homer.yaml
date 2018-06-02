@@ -48,6 +48,66 @@ items:
       io.kompose.service: telegraf
   status:
     loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: homer-webapp
+    name: homer-webapp
+  spec:
+    ports:
+    - name: "80"
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      io.kompose.service: homer-webapp
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: db
+    name: db
+  spec:
+    ports:
+    - name: "3306"
+      port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      io.kompose.service: db
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: influxdb
+    name: influxdb
+  spec:
+    ports:
+    - name: "8806"
+      port: 8806
+      protocol: TCP
+      targetPort: 8806
+    selector:
+      io.kompose.service: influxdb
+  status:
+    loadBalancer: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
