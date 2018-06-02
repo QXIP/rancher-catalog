@@ -293,24 +293,7 @@ items:
         - image: influxdb:1.5-alpine
           name: influxdb
           resources: {}
-          volumeMounts:
-          - mountPath: /var/lib/influxdb
-            name: influx-data
         restartPolicy: Always
-  status: {}
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    creationTimestamp: null
-    labels:
-      io.kompose.service: influx-data
-    name: influx-data
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 100Mi
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
