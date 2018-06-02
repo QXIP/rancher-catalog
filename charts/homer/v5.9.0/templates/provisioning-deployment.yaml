@@ -48,7 +48,7 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /tmp
-          name: homer-cronograf-dashboard
+          name: homer-chronograf-dashboard
       restartPolicy: Always
       volumes:
       - name: homer-chronograf-dashboard
