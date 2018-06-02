@@ -45,7 +45,7 @@ items:
     - name: "9060"
       port: 9060
       targetPort: 9060
-    - name: 9060-UDP
+    - name: 9060-udp
       port: 9060
       protocol: UDP
       targetPort: 9060
