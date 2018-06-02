@@ -9,35 +9,6 @@ items:
       org.label-schema.group: monitoring
     creationTimestamp: null
     labels:
-      io.kompose.service: caddy
-    name: caddy
-  spec:
-    ports:
-    - name: "3000"
-      port: 3000
-      targetPort: 3000
-    - name: "9090"
-      port: 9090
-      targetPort: 9090
-    - name: "9093"
-      port: 9093
-      targetPort: 9093
-    - name: "9080"
-      port: 9080
-      targetPort: 9080
-    selector:
-      io.kompose.service: caddy
-  status:
-    loadBalancer: {}
-- apiVersion: v1
-  kind: Service
-  metadata:
-    annotations:
-      kompose.cmd: kompose convert -o homer.yaml
-      kompose.version: 1.13.0 (84fa826)
-      org.label-schema.group: monitoring
-    creationTimestamp: null
-    labels:
       io.kompose.service: heplify-server
     name: heplify-server
   spec:
@@ -83,49 +54,6 @@ items:
     annotations:
       kompose.cmd: kompose convert -o homer.yaml
       kompose.version: 1.13.0 (84fa826)
-      org.label-schema.group: monitoring
-    creationTimestamp: null
-    labels:
-      io.kompose.service: caddy
-    name: caddy
-  spec:
-    replicas: 1
-    strategy: {}
-    template:
-      metadata:
-        creationTimestamp: null
-        labels:
-          io.kompose.service: caddy
-      spec:
-        containers:
-        - env:
-          - name: ADMIN_PASSWORD
-            value: admin
-          - name: ADMIN_USER
-            value: admin
-          image: stefanprodan/caddy
-          name: caddy
-          ports:
-          - containerPort: 3000
-          - containerPort: 9090
-          - containerPort: 9093
-          - containerPort: 9080
-          resources: {}
-          volumeMounts:
-           - name: caddy-config-volume
-             mountPath: /etc/caddy
-        restartPolicy: Always
-        volumes:
-          - name: caddy-config-volume
-            configMap:
-              name: homer-caddy-config
-  status: {}
-- apiVersion: extensions/v1beta1
-  kind: Deployment
-  metadata:
-    annotations:
-      kompose.cmd: kompose convert -o homer.yaml
-      kompose.version: 1.13.0 (84fa826)
     creationTimestamp: null
     labels:
       io.kompose.service: chronograf
@@ -148,6 +76,8 @@ items:
           image: chronograf:1.5-alpine
           name: chronograf
           resources: {}
+          ports:
+          - containerPort: 8888
           volumeMounts:
            - name: telegraf-config-volume
              mountPath: /etc/telegraf
@@ -267,6 +197,8 @@ items:
           image: sipcapture/homer-webapp
           name: homer-webapp
           resources: {}
+          ports:
+          - containerPort: 80
         restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
