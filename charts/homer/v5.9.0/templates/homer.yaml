@@ -100,10 +100,10 @@ items:
     name: influxdb
   spec:
     ports:
-    - name: "8806"
-      port: 8806
+    - name: "8086"
+      port: 8086
       protocol: TCP
-      targetPort: 8806
+      targetPort: 8086
     selector:
       io.kompose.service: influxdb
   status:
