@@ -48,7 +48,6 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: homer-chrono-dashboard
-      restartPolicy: Never
       volumes:
       - name: homer-chrono-dashboard
         configMap:
