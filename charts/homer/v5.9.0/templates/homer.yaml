@@ -205,9 +205,8 @@ items:
         volumes:
           - name: webapp-config-volume
             configMap:
-              name: homer-webapp-config
- 
-       restartPolicy: Always
+              name: homer-webapp-config 
+        restartPolicy: Always
   status: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
