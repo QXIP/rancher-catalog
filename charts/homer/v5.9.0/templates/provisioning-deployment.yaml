@@ -10,8 +10,7 @@ metadata:
   name: provisioning
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -48,10 +47,10 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /tmp
-          name: homer-chronograf-dashboard
-      restartPolicy: Always
+          name: homer-chrono-dashboard
+      restartPolicy: Never
       volumes:
-      - name: homer-chronograf-dashboard
+      - name: homer-chrono-dashboard
         configMap:
           name: homer-chronograf-dashboard
 status: {}
