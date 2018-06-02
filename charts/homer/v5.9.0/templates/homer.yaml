@@ -108,6 +108,26 @@ items:
       io.kompose.service: influxdb
   status:
     loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: chronograf
+    name: chronograf
+  spec:
+    ports:
+    - name: "8888"
+      port: 8888
+      protocol: TCP
+      targetPort: 8888
+    selector:
+      io.kompose.service: chronograf
+  status:
+    loadBalancer: {}
 - apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
