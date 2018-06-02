@@ -17,3 +17,5 @@ data:
       ## An array of urls to scrape metrics from.
       urls = ["http://heplify-server:9096/metrics"]
 kind: ConfigMap
+metadata:
+  name: homer-telegraf-config

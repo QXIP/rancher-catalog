@@ -17,3 +17,6 @@ data:
         tls off
     }
 kind: ConfigMap
+metadata:
+  name: homer-caddy-config
+
