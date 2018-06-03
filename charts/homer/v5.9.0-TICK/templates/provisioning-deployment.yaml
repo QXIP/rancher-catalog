@@ -11,7 +11,7 @@ metadata:
 spec:
   replicas: 1
   strategy: {}
-  backoffLimit: 1
+  backoffLimit: 2
   activeDeadlineSeconds: 100
   template:
     metadata:
@@ -25,6 +25,10 @@ spec:
         - /bin/sh
         - -c
         - |
+          if [ -f /.bootstrapped ]; then
+            echo "Already Bootstrapped! Exiting ..."
+            exit 0
+          fi
           apk add --no-cache curl;
           echo Waiting for influxdb API ...;
           while ! nc -z influxdb 8086;
@@ -45,7 +49,8 @@ spec:
           echo Chronograf Dashboard push ...;
           curl -i -X POST -H "Content-Type: application/json" http://chronograf:8888/chronograf/v1/dashboards -d @/tmp/homer_dashboard.json
           echo Provisioning completed! Exiting ...;
-          exit 0;
+          touch /.bootstrapped
+          exit 1;
         image: alpine:latest
         name: provisioning
         resources: {}
