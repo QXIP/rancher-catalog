@@ -186,10 +186,8 @@ items:
           name: heplify-server
           ports:
           - containerPort: 9060
-            hostPort: {{ .Values.hep.hostPort }}
             protocol: UDP
           - containerPort: 9060
-            hostPort: {{ .Values.hep.hostPort }}
             protocol: TCP
           resources: {}
   status: {}
