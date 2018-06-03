@@ -1,7 +1,6 @@
 categories:
 - Database
 - Monitoring
-- VoIP
 questions:
 - variable: service.type
   default: "ClusterIP"
