@@ -1,4 +1,4 @@
-# Homer Classic (mysql)
+# Homer Classic MySQL
 
 [Homer](https://www.sipcapture.org/) is an open-source VoIP and RTC Monitoring stack, powered by JSON-like documents with dynamic schemas and Timeseries backends.
 

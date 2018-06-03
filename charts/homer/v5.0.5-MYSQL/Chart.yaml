@@ -1,4 +1,4 @@
-name: homer-mysql
+name: homer
 version: 5.0.5-MYSQL
 appVersion: 5.0.5
 description: Open-Source VoIP and RTC Monitoring
