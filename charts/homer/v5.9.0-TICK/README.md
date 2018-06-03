@@ -1,22 +1,27 @@
-Homer 5, heplify-server, TICK Stack
-========
+<img src="https://camo.githubusercontent.com/fa828ea477eadd7e17a7814bae9946fea34e4c8b/687474703a2f2f692e696d6775722e636f6d2f566958634741442e706e67" width=400 />
 
-## Setup
+# Homer 5.9 + TICK Stack
 
-```bash
-docker-compose up
-```
+[Homer](https://www.sipcapture.org/) is an open-source VoIP and RTC Monitoring stack, powered by JSON-like documents with dynamic schemas and Timeseries backends.
 
-to bring up:  
+### Introduction
 
-* HEPlify-server localhost:9060 (hep-only)
-* Homer localhost:9080 (admin/test123) 
-* Chronograf localhost:9090 (admin/admin)
-  * InfluxDB
-  * Kapacitor
+This chart bootstraps a [Homer](https://github.com/sipcapture/homer) 5.9 deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+
+#### Components
+* HEP Stack
+  * HOMER WebApp
+  * HEPlify-Server
+  * MySQL
+* TICK Stack
   * Telegraf
+  * InfluxDB
+  * Chronograf
+  * Kapacitor
+  
+### Usage Notes
+In this version, there are NO STATS available in the HOMER, just search. All timeseries are in InfluxDB!
 
-## Notes
 When dealing with prometheus counters in InfluxDB, refer to the following example usage of `difference` and `derivative` functions when selecting:
 ```
 SELECT difference(last("counter")) AS "mean_counter" FROM "homer"."autogen"."heplify_method_response" WHERE time > :dashboardTime: GROUP BY time(:interval:), "method", "response" FILL(null)
