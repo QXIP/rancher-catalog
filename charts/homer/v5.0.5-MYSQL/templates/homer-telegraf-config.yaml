@@ -24,10 +24,10 @@ data:
       ## If true, the original metric will be dropped by the
       ## aggregator and will not get sent to the output plugins.
       drop_original = true
-      stats = ["count","mean","sum"]
+      ## stats = ["count","mean","sum"]
     [[inputs.prometheus]]
      ## An array of urls to scrape metrics from.
-     urls = ["http://heplify:9096/metrics"]
+     urls = ["http://heplify-server:9096/metrics"]
 kind: ConfigMap
 metadata:
   name: homer-telegraf-config

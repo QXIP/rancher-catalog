@@ -186,10 +186,10 @@ items:
           name: heplify-server
           ports:
           - containerPort: 9060
-            hostPort: 9060
+            hostPort: {{ .Values.hep.hostPort }}
             protocol: UDP
           - containerPort: 9060
-            hostPort: 9060
+            hostPort: {{ .Values.hep.hostPort }}
             protocol: TCP
           resources: {}
   status: {}
@@ -288,7 +288,7 @@ items:
           io.kompose.service: telestats
       spec:
         containers:
-        - image: qxip/telestats:master
+        - image: qxip/telestats
           name: telestats
           ports:
           - containerPort: 8094

@@ -1,6 +1,7 @@
 categories:
 - Database
-- NoSQL
+- Monitoring
+- VoIP
 questions:
 - variable: service.type
   default: "ClusterIP"
@@ -36,3 +37,10 @@ questions:
 #     type: hostname
 #     required: true
 #     label: Layer 7 Load Balancer Hostname
+- variable: hep.nodePort
+    default: 9060
+    description: "HEP UDP/TCP port number(to set explicitly, choose port between 30000-32767)"
+    type: int
+    min: 30000
+    max: 32767
+    label: HEP NodePort number
