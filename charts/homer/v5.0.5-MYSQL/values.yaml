@@ -21,4 +21,4 @@ ingress:
   ## If tls is set to true, annotation ingress.kubernetes.io/secure-backends: "true" will automatically be set
   annotations:
   #  kubernetes.io/ingress.class: nginx
-
+                                              
