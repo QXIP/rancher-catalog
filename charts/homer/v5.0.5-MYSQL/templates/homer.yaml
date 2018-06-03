@@ -296,7 +296,7 @@ items:
           resources: {}
           volumeMounts:
            - name: telestats-config-volume
-             mountPath: /tmp
+             mountPath: /usr/src/app
         volumes:
           - name: telestats-config-volume
             configMap:
