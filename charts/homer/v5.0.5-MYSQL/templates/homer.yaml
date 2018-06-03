@@ -286,16 +286,17 @@ items:
           io.kompose.service: telestats
       spec:
         containers:
-        - image: qxip/telestats
+        - image: qxip/telestats:master
           name: telestats
           ports:
           - containerPort: 8094
             protocol: UDP
+          - containerPort: 8094
+            protocol: TCP
           resources: {}
           volumeMounts:
            - name: telestats-config-volume
-             mountPath: /config.js
-             subPath: config.js
+             mountPath: /tmp
         volumes:
           - name: telestats-config-volume
             configMap:
