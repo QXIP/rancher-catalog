@@ -294,7 +294,8 @@ items:
           resources: {}
           volumeMounts:
            - name: telestats-config-volume
-             mountPath: /
+             mountPath: /config.js
+             subPath: config.js
         volumes:
           - name: telestats-config-volume
             configMap:
