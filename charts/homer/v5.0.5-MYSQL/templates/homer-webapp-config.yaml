@@ -1,8 +1,0 @@
-apiVersion: v1
-data:
-  .bootstrapped: |
-    homer-was-here!
-kind: ConfigMap
-metadata:
-  name: homer-webapp-config
-
