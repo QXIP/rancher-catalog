@@ -1,0 +1,20 @@
+name: homer-mysql
+version: 5.0.5-MYSQL
+appVersion: 5.0.5
+description: Open-Source VoIP and RTC Monitoring
+keywords:
+- homer
+- voip
+- rtc
+- monitoring
+- troubleshooting
+- capture
+- alerting
+home: https://sipcapture.org
+icon: http://sipcapture.org/images/logos/preloader-logo.png
+sources:
+- https://github.com/sipcapture/homer
+maintainers:
+- name: QXIP
+  email: info@qxip.net
+engine: gotpl
