@@ -1,5 +1,5 @@
-name: homer
-version: 5.9.0-TICK
+name: homer-tick
+version: 5.9.0
 appVersion: 5.9.0
 description: Open-Source VoIP and RTC Monitoring
 keywords:
