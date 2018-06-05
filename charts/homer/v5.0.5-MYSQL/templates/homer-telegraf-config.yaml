@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  telegraf.conf: |
+    # Configuration for telegraf agent
+    [agent]
+      interval = "30s"
+      round_interval = true
+      flush_buffer_when_full = true
+      collection_jitter = "0s"
+      flush_interval = "30s"
+      flush_jitter = "0s"
+      debug = false
+      quiet = true
+    [[outputs.socket_writer]]
+      #Node JS udp or tcp socket
+      address = "udp://telestats:8094"
+      # keep_alive_period = "5m"
+      data_format = "json"
+      json_timestamp_units = "1ms"
+    [[aggregators.basicstats]]
+      ## General Aggregator Arguments:
+      ## The period on which to flush & clear the aggregator.
+      period = "30s"
+      ## If true, the original metric will be dropped by the
+      ## aggregator and will not get sent to the output plugins.
+      drop_original = true
+      ## stats = ["count","mean","sum"]
+    [[inputs.prometheus]]
+     ## An array of urls to scrape metrics from.
+     urls = ["http://heplify-server:9096/metrics"]
+kind: ConfigMap
+metadata:
+  name: homer-telegraf-config
