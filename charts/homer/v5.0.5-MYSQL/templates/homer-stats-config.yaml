@@ -17,6 +17,8 @@ data:
       KEY `to_date` (`to_date`),
       KEY `method` (`type`)
     ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8
+    /*!50100 PARTITION BY RANGE ( UNIX_TIMESTAMP(`from_date`))
+    (PARTITION pmax VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */ ;
 
     CREATE TABLE IF NOT EXISTS `stats_method` (
       `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -34,6 +36,8 @@ data:
       KEY `method` (`method`),
       KEY `completed` (`cseq`)
     ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8
+    /*!50100 PARTITION BY RANGE ( UNIX_TIMESTAMP(`from_date`))
+    (PARTITION pmax VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */ ;
 
 kind: ConfigMap
 metadata:
