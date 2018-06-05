@@ -137,8 +137,15 @@ items:
           - name: MYSQL_ROOT_HOST
             value: '%'
           - name: MYSQL_ROOT_PASSWORD
-          image: mariadb:latest
+          image: mysql:5.7
           name: db
+          volumeMounts:
+            - name: stats-config-volume
+              mountPath: /docker-entrypoint-initdb.d
+        volumes:
+          - name: stats-config-volume
+            configMap:
+              name: homer-stats-config 
           resources: {}
   status: {}
 - apiVersion: extensions/v1beta1
