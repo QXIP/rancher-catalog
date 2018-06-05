@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   init_db.sql: |
     CREATE DATABASE IF NOT EXISTS homer_statistic;
-    GRANT ALL ON homer_statistic.* TO 'homer_user'@'%';
+    GRANT ALL ON homer_statistic.* TO 'homer_user'@'%' identified by 'homer_password';;
 
     USE homer_statistic;
     CREATE TABLE IF NOT EXISTS `stats_data` (
