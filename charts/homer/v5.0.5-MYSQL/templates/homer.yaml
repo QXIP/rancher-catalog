@@ -293,7 +293,7 @@ items:
           io.kompose.service: telestats
       spec:
         containers:
-        - image: qxip/telestats:1.0.7
+        - image: qxip/telestats:1.0.8
           name: telestats
           ports:
           - containerPort: 8094
