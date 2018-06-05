@@ -303,7 +303,7 @@ items:
           resources: {}
           volumeMounts:
            - name: telestats-config-volume
-             mountPath: /usr/src/app
+             mountPath: /tmp
         volumes:
           - name: telestats-config-volume
             configMap:
