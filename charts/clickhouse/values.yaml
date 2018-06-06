@@ -1,0 +1,101 @@
+# Default values for clickhouse-on-kube.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# number of nodes / shards
+replicaCount: 1
+
+image:
+  repository: hepic/clickhouse-k8s
+  tag: latest
+  pullPolicy: Always
+  # imagePullSecrets: grabdsbot
+
+# grant pods/patch to default sa
+rbac: true
+
+service:
+  type: ClusterIP
+  rpc_port: 9000
+  rest_port: 8123
+
+ebs:
+  # use aws ebs
+  enabled: true
+  size: 8Gi
+
+elb:
+  # use frontend elb
+  enabled: true
+  internal_range: 10.59.0.0/16,10.10.0.0/16
+
+zk:
+  enabled: true
+  port: 2181
+  servers:
+  - zk-zookeeper.zk
+
+security:
+  enabled: true
+
+  profiles:
+  - name: default
+    max_memory_usage: 10000000000
+    use_uncompressed_cache: 0
+    load_balancing: random
+
+  quotas:
+  - name: default
+    duration: 3600
+    queries: 0
+    errors: 0
+    result_rows: 0
+    read_rows: 0 
+    execution_time: 0
+
+  users:
+  - name: user_1
+    password: djfgyeugf3484rf4
+    profile: default
+    quota: default
+  - name: svc
+    password: sdkfh1kjdshfkjj3
+    profile: default
+    quota: default
+
+  # is used for running distributed queries (system)  
+  distributed:
+    user: sys_distrib_query
+    password: iudhc87wfy87hrevh
+    profile: default
+    quota: default
+
+ingress:
+  # use ingress
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:  
+  limits:
+   cpu: 250m
+   memory: 1024Mi
+  requests:
+   cpu: 250m
+   memory: 1024Mi
+
+nodeSelector:
+  # use nodes with label
+  type: services
+
+tolerations: []
+
+affinity: {}
