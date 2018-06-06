@@ -9,17 +9,13 @@ metadata:
     io.kompose.service: provisioning
   name: provisioning
 spec:
-  replicas: 0
-  strategy: {}
-  backoffLimit: 1
-  completions: 1
-  activeDeadlineSeconds: 120
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: provisioning
     spec:
+      restartPolicy: "Never"
       containers:
       - args:
         - /bin/sh
@@ -57,7 +53,6 @@ spec:
         volumeMounts:
         - mountPath: /tmp
           name: homer-chronograf-config
-      restartPolicy: "Never"
       volumes:
       - name: homer-chronograf-config
         configMap:
