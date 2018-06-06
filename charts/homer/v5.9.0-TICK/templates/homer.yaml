@@ -169,6 +169,7 @@ items:
     annotations:
       kompose.cmd: kompose convert -o homer.yaml
       kompose.version: 1.13.0 (84fa826)
+      "helm.sh/hook": "pre-install"
     creationTimestamp: null
     labels:
       io.kompose.service: db

@@ -4,6 +4,9 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.13.0 (84fa826)
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
   creationTimestamp: null
   labels:
     io.kompose.service: provisioning
