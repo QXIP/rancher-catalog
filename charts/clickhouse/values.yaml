@@ -21,16 +21,16 @@ service:
 
 ebs:
   # use aws ebs
-  enabled: true
+  enabled: false
   size: 8Gi
 
 elb:
   # use frontend elb
-  enabled: true
+  enabled: false
   internal_range: 10.59.0.0/16,10.10.0.0/16
 
 zk:
-  enabled: true
+  enabled: false
   port: 2181
   servers:
   - zk-zookeeper.zk
