@@ -1,0 +1,378 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+      org.label-schema.group: monitoring
+    creationTimestamp: null
+    labels:
+      io.kompose.service: heplify-server
+    name: heplify-server
+  spec:
+    ports:
+    - name: "9060"
+      port: 9060
+      targetPort: 9060
+    - name: 9060-udp
+      port: 9060
+      protocol: UDP
+      targetPort: 9060
+    - name: "9096"
+      port: 9096
+      targetPort: 9096
+    selector:
+      io.kompose.service: heplify-server
+  status:
+    loadBalancer: {}
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: homer-webapp
+    name: homer-webapp
+  spec:
+    ports:
+    - name: "HTTP"
+      port: 80
+      protocol: TCP
+      targetPort: 80
+	- name: "HTTPS"
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    selector:
+      io.kompose.service: homer-webapp
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: db
+    name: db
+  spec:
+    ports:
+    - name: "5432"
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    selector:
+      io.kompose.service: db
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: influxdb
+    name: influxdb
+  spec:
+    ports:
+    - name: "8086"
+      port: 8086
+      protocol: TCP
+      targetPort: 8086
+    selector:
+      io.kompose.service: influxdb
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: chronograf
+    name: chronograf
+  spec:
+    ports:
+    - name: "8888"
+      port: 8888
+      protocol: TCP
+      targetPort: 8888
+    selector:
+      io.kompose.service: chronograf
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: telegraf
+    name: telegraf
+  spec:
+    ports:
+    - name: "8092"
+      port: 8092
+      protocol: UDP
+      targetPort: 8092
+    - name: "8125"
+      port: 8125
+      protocol: UDP
+      targetPort: 8125
+    selector:
+      io.kompose.service: telegraf
+  status:
+    loadBalancer: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: chronograf
+    name: chronograf
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: chronograf
+      spec:
+        containers:
+        - env:
+          - name: INFLUXDB_URL
+            value: http://influxdb:8086
+          - name: KAPACITOR_URL
+            value: http://kapacitor:9092
+          image: chronograf:1.5-alpine
+          name: chronograf
+          resources: {}
+          ports:
+          - containerPort: 8888
+            protocol: TCP
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: db
+    name: db
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: db
+      spec:
+        containers:
+        - env:
+          - name: POSTGRES_PASSWORD
+            value: 'root'
+          image: postgres:10-alpine
+          name: db
+          resources: {}
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+      org.label-schema.group: monitoring
+    creationTimestamp: null
+    labels:
+      io.kompose.service: heplify-server
+    name: heplify-server
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: heplify-server
+      spec:
+        containers:
+        - args:
+          - ./heplify-server
+          env:
+           - name: HEPLIFYSERVER_SBSCHEMA
+            value: homer7
+          - name: HEPLIFYSERVER_DBADDR
+            value: db:5432
+          - name: HEPLIFYSERVER_DBDRIVER
+            value: postgres
+          - name: HEPLIFYSERVER_DBPASS
+            value: root
+          - name: HEPLIFYSERVER_DBUSER
+            value: root
+          - name: HEPLIFYSERVER_HEPADDR
+            value: 0.0.0.0:9060
+          - name: HEPLIFYSERVER_LOGLVL
+            value: info
+          - name: HEPLIFYSERVER_LOGSTD
+            value: "true"
+          - name: HEPLIFYSERVER_PROMADDR
+            value: 0.0.0.0:9096
+          - name: HEPLIFYSERVER_PROMTARGETIP
+          - name: HEPLIFYSERVER_PROMTARGETNAME
+          image: negbie/heplify-server:latest
+          name: heplify-server
+          ports:
+          - containerPort: 9060
+            hostPort: 9060
+            protocol: UDP
+          - containerPort: 9060
+            hostPort: 9060
+            protocol: TCP
+          resources: {}
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: homer-webapp
+    name: homer-webapp
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: homer-webapp
+      spec:
+        containers:
+        - env:
+          - name: DB_HOST
+            value: db
+          - name: DB_PASS
+          - name: DB_USER
+            value: root
+          image: hepic/homer7-webapp
+          name: homer-webapp
+          resources: {}
+          ports:
+            - containerPort: 80
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: influxdb
+    name: influxdb
+  spec:
+    replicas: 1
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: influxdb
+      spec:
+        containers:
+        - image: influxdb:1.5-alpine
+          name: influxdb
+          resources: {}
+          ports:
+            - containerPort: 8086
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: kapacitor
+    name: kapacitor
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: kapacitor
+      spec:
+        containers:
+        - env:
+          - name: KAPACITOR_HOSTNAME
+            value: kapacitor
+          - name: KAPACITOR_INFLUXDB_0_URLS_0
+            value: http://influxdb:8086
+          image: kapacitor:1.5-alpine
+          name: kapacitor
+          resources: {}
+  status: {}
+- apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+    annotations:
+      kompose.cmd: kompose convert -o homer.yaml
+      kompose.version: 1.13.0 (84fa826)
+    creationTimestamp: null
+    labels:
+      io.kompose.service: telegraf
+    name: telegraf
+  spec:
+    replicas: 1
+    strategy: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: telegraf
+      spec:
+        containers:
+        - image: telegraf:1.5-alpine
+          name: telegraf
+          ports:
+          - containerPort: 8092
+            protocol: UDP
+          - containerPort: 8125
+            protocol: UDP
+          resources: {}
+          volumeMounts:
+           - name: telegraf-config-volume
+             mountPath: /etc/telegraf
+        volumes:
+          - name: telegraf-config-volume
+            configMap:
+              name: homer-telegraf-config
+  status: {}
+kind: List
+metadata: {}

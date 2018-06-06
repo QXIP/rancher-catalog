@@ -1,0 +1,38 @@
+categories:
+- Database
+- NoSQL
+questions:
+- variable: service.type
+  default: "ClusterIP"
+  description: "HOMER K8s Service type"
+  type: enum
+  group: "Services and Load Balancing"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+  required: true
+  label: HOMER Service Type
+  # show_if: "ingress.enabled=false"
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: service.nodePort
+    default: ""
+    description: "NodePort port number(to set explicitly, choose port between 30000-32767)"
+    type: int
+    min: 30000
+    max: 32767
+    label: Service NodePort number
+# - variable: ingress.enabled
+#   default: "true"
+#   description: "Expose app using Layer 7 Load Balancer - ingress"
+#   type: boolean
+#   label: Expose app using Layer 7 Load Balancer
+#   show_subquestion_if: true
+#   group: "Services and Load Balancing"
+#   subquestions:
+#   - variable: ingress.host
+#     default: "xip.io"
+#     description: "layer 7 Load Balancer hostname"
+#     type: hostname
+#     required: true
+#     label: Layer 7 Load Balancer Hostname
