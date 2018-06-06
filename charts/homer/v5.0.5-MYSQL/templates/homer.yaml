@@ -267,7 +267,8 @@ items:
           resources: {}
           volumeMounts:
            - name: telegraf-config-volume
-             mountPath: /etc/telegraf
+             mountPath: /etc/telegraf/telegraf.conf
+             subPath: telegraf.conf
         volumes:
           - name: telegraf-config-volume
             configMap:
@@ -303,7 +304,8 @@ items:
           resources: {}
           volumeMounts:
            - name: telestats-config-volume
-             mountPath: /tmp
+             mountPath: /usr/src/app/config.js
+             subPath: config.js
         volumes:
           - name: telestats-config-volume
             configMap:
