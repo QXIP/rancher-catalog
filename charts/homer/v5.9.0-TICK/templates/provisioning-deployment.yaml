@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
@@ -50,7 +50,7 @@ spec:
           curl -i -X POST -H "Content-Type: application/json" http://chronograf:8888/chronograf/v1/dashboards -d @/tmp/homer_dashboard.json
           echo Provisioning completed! Exiting ...;
           touch /.bootstrapped
-          exit 1;
+          exit 0;
         image: alpine:latest
         name: provisioning
         resources: {}
@@ -62,4 +62,3 @@ spec:
       - name: homer-chronograf-config
         configMap:
           name: homer-chronograf-dashboard
-status: {}
