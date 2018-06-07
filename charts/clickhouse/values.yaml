@@ -92,10 +92,6 @@ resources:
    cpu: 250m
    memory: 1024Mi
 
-nodeSelector:
-  # use nodes with label
-  type: services
-
 tolerations: []
 
 affinity: {}
