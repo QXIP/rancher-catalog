@@ -6,7 +6,7 @@
 replicaCount: 1
 
 image:
-  repository: hepic/clickhouse-k8s
+  repository: qxip/clickhouse-k8s
   tag: latest
   pullPolicy: Always
   # imagePullSecrets: grabdsbot
@@ -36,7 +36,7 @@ zk:
   - zk-zookeeper.zk
 
 security:
-  enabled: true
+  enabled: false
 
   profiles:
   - name: default
