@@ -85,8 +85,6 @@ spec:
       imagePullSecrets:
       - name: {{ .Values.image.imagePullSecrets }}
       {{ end }}
-{{ toYaml . | indent 8 }}
-    {{- end }}      
     {{- with .Values.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
