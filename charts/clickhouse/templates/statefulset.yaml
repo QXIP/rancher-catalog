@@ -33,7 +33,7 @@ spec:
         - name: "clickhouse-client"
           image: "yandex/clickhouse-client"
           imagePullPolicy: {{ .Values.image.pullPolicy }}          
-          - args: ["-h", "{{ .Release.Name }}"]
+          args: ["-h", "{{ .Release.Name }}"]
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}          
