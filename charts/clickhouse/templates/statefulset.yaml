@@ -10,10 +10,6 @@ metadata:
 spec:
   podManagementPolicy: OrderedReady
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: {{ .Release.Name }}
-      release: {{ .Release.Name }}
   serviceName: {{ .Release.Name }}
   template:
     metadata:
