@@ -23,10 +23,6 @@ spec:
     port: 9009
     targetPort: 9009
     protocol: TCP
-  selector:
-    app: {{ $.Release.Name }}
-    shard_name: {{ $.Release.Name }}-{{$i}}
-    release: {{ $.Release.Name }}
 ---
 {{end}}
 # --- elb ---
@@ -53,8 +49,4 @@ spec:
     port: {{ $.Values.service.rest_port }}
     targetPort: {{ $.Values.service.rest_port }}
     protocol: TCP      
-  selector:
-    app: {{ .Release.Name }}  
-  sessionAffinity: None
-  type: LoadBalancer
   {{- end }}
