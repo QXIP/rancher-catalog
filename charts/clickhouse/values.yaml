@@ -7,7 +7,7 @@ replicaCount: 1
 
 image:
   repository: qxip/clickhouse-k8s
-  tag: latest
+  tag: master
   pullPolicy: Always
   # imagePullSecrets: grabdsbot
 
