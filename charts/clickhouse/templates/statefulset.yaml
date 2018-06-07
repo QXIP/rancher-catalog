@@ -30,6 +30,11 @@ spec:
             fieldRef:
               fieldPath: metadata.name
       containers:
+        - name: "clickhouse-client"
+          image: "yandex/clickhouse-client"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}          
+          - args:
+            - -h {{ .Release.Name }}
         - name: {{ .Release.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}          
