@@ -10,33 +10,6 @@ metadata:
 spec:
   podManagementPolicy: OrderedReady
   replicas: {{ .Values.replicaCount }}
-  serviceName: {{ .Release.Name }}-client
-  template:
-    metadata:
-      labels:
-        app: {{ .Release.Name }}-client
-        release: {{ .Release.Name }}-client
-    spec:      
-      initContainers:
-      - name: labeler
-        image: devth/k8s-labeler
-        env:
-        - name: KUBE_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: KUBE_LABEL_shard_name
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-      containers:
-        - name: "clickhouse-client"
-          image: "yandex/clickhouse-client"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}          
-          args: ["-h", "{{ .Release.Name }}"]
-spec:
-  podManagementPolicy: OrderedReady
-  replicas: {{ .Values.replicaCount }}
   serviceName: {{ .Release.Name }}
   template:
     metadata:
