@@ -2,16 +2,16 @@ name: elassandra
 version: 0.1.0
 appVersion: 5.5
 icon: https://github.com/strapdata/elassandra/raw/v5.5.0-strapdata/elassandra-logo.png
-description: Apache Cassandra is a free and open-source distributed database management
+description: Elassandra = Elasticsearch + Cassandra
+  Apache Cassandra is a free and open-source distributed database management
   system designed to handle large amounts of data across many commodity servers, providing
   high availability with no single point of failure.
-icon: https://upload.wikimedia.org/wikipedia/commons/5/5e/Cassandra_logo.svg
 keywords:
 - cassandra
 - elassandra
 - database
 - nosql
-home: http://elassandra.io
+home: http://www.strapdata.com
 maintainers:
 - name: qxip
   email: info@qxip.net
