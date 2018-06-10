@@ -2,6 +2,40 @@ categories:
 - Database
 - NoSQL
 questions:
+- variable: config.cluster_name
+  default: "elassandra"
+  description: "Elassandra Cluster Name"
+  type: string
+  label: Elassandra Cluster Name
+- variable: config.rack_name
+  default: "RAC1"
+  description: "Elassandra Rack Name"
+  type: string
+  label: Elassandra Rack Name
+- variable: config.dc_name
+  default: "DC1"
+  description: "Elassandra DC Name"
+  type: string
+  label: Elassandra DC Name
+- variable: config.cluster_size
+  default: "3"
+  description: "Elassandra Cluster Nodes"
+  type: int
+  min: 3
+  max: 12
+  label: Elassandra Cluster Nodes
+- variable: config.seed_size
+  default: "2"
+  description: "Elassandra Seed Size (nodes-1)"
+  type: int
+  min: 2
+  max: 11
+  label: Elassandra Seed Size
+- variable: config.num_tokens
+  default: "256"
+  description: "Elassandra Cluster Tokens"
+  type: int
+  label: Elassandra Cluster Tokens
 - variable: defaultImage
   default: "true"
   description: "Use default Docker images"
