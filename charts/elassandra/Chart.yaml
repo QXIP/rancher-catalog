@@ -1,5 +1,5 @@
 name: elassandra
-version: 0.1.0
+version: 0.1.5
 appVersion: 5.5
 icon: https://github.com/strapdata/elassandra/raw/v5.5.0-strapdata/elassandra-logo.png
 description: Elassandra = Elasticsearch + Cassandra
