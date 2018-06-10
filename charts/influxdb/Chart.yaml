@@ -1,7 +1,7 @@
 name: influxdb
-version: 0.9.3
-appVersion: 1.5
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Influxdb_logo.svg/768px-Influxdb_logo.svg.png
+version: 1.5.3-1
+appVersion: 1.5.3
+icon: https://i.imgur.com/Fv1WqI6.png
 description: Scalable datastore for metrics, events, and real-time analytics.
 keywords:
 - influxdb
