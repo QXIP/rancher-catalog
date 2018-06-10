@@ -1,7 +1,7 @@
 apiVersion: v1
 description: Elassandra visualization platform
 name: kibana-elassandra
-version: 5.5.0-1
+version: 5.5.0-2
 appVersion: 5.5.0
 icon: https://i.imgur.com/0put5Hg.png
 sources:
