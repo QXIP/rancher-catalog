@@ -1,8 +1,0 @@
-apiVersion: v1
-description: Elasticsearch visualization platform
-name: kibana
-version: 6.2.4-1
-appVersion: 6.2.4
-icon: https://i.imgur.com/0put5Hg.png
-sources:
-  - https://www.elastic.co/products/kibana
