@@ -4,7 +4,7 @@
 replicaCount: 1
 
 image:
-  repository: qxip/kibana-elassandra
+  repository: "qxip/kibana-elassandra"
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -12,8 +12,8 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
-env: {}
-  ELASTICSEARCH_URL: "http://elasticsearch:9200"
+env:
+  ELASTICSEARCH_URL: "http://elassandra:9200"
 
 resources:
 #  limits:
