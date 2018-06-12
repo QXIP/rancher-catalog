@@ -45,7 +45,7 @@ questions:
   group: "Container Images"
   subquestions:
   - variable: image.repo
-    default: "strapdata/ScyllaDB"
+    default: "qxip/scylladb"
     description: "ScyllaDB image name"
     type: string
     label: ScyllaDB Image Name
