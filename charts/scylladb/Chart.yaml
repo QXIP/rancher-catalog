@@ -1,0 +1,15 @@
+name: scylladb
+version: 0.1.5
+appVersion: 5.5
+icon: https://www.scylladb.com/wp-content/uploads/logo-scylla.svg
+description: Scylla is a drop-in Apache Cassandra replacement that powers your applications with ultra-low latency and extreme throughput.
+keywords:
+- cassandra
+- scylladb
+- database
+- nosql
+home: http://www.scylladb.com
+maintainers:
+- name: qxip
+  email: info@qxip.net
+engine: gotpl
