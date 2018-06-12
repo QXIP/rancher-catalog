@@ -25,7 +25,7 @@ questions:
   max: 12
   label: ScyllaDB Cluster Nodes
 - variable: config.seed_size
-  default: "2"
+  default: "1"
   description: "ScyllaDB Seed Size (nodes-1)"
   type: int
   min: 1
