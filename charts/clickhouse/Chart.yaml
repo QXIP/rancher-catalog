@@ -3,4 +3,4 @@ description: ClickHouse is an open source column-oriented database management sy
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Clickhouse.png/330px-Clickhouse.png
 name: clickhouse
 appVersion: "1.1"
-version: 0.2.0-6
+version: 0.2.0-7

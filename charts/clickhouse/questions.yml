@@ -22,9 +22,13 @@ questions:
     description: "Zookeeper Port"
     type: int
     label: Zookeeper Port
-  - variable: zk.servers = {}
+  - variable: zk.server
+    type: enum
     description: "Zookeeper Host"
     label: Zookeeper Servers
+    default: "zookeeper-zookeeper"
+    type: string
+    label: Zookeeper Host
 - variable: defaultImage
   default: "true"
   description: "Use default Docker images"

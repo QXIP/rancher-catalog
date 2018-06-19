@@ -43,12 +43,10 @@ data:
   zookeeper-servers.xml: |-
     <yandex>
         <zookeeper incl="zookeeper-servers">
-            {{- range $index, $zk := .Values.zk.servers }}
             <node index="1">
-                <host>{{ $zk }}</host>
+                <host>{{ $.Values.zk.server }}</host>
                 <port>{{ $.Values.zk.port }}</port>
             </node>
-            {{- end }}        
         </zookeeper>
 
         <!-- Allow to execute distributed DDL queries (CREATE, DROP, ALTER, RENAME) on cluster.

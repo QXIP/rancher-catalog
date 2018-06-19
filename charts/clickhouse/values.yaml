@@ -32,8 +32,7 @@ elb:
 zk:
   enabled: false
   port: 2181
-  servers:
-  - zk-zookeeper.zk
+  server: "zookeeper"
 
 security:
   enabled: false
