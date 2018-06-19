@@ -25,7 +25,7 @@ questions:
   - variable: zk.servers
     default: "{zookeeper-zookeeper}"
     description: "Zookeeper Host"
-    type: array
+    type: edge
     label: Zookeeper Servers
 - variable: defaultImage
   default: "true"
