@@ -3,7 +3,7 @@ categories:
 - NoSQL
 questions:
 - variable: replicaCount
-  default: ""
+  default: 1
   description: "Clickhouse Nodes / Shards"
   type: int
   min: 1
@@ -18,15 +18,15 @@ questions:
   group: "Zookeeper Settings"
   subquestions:
   - variable: zk.port
-    default: "2181"
+    default: 2181
     description: "Zookeeper Port"
     type: int
     label: Zookeeper Port
-  - variable: zk.servers.key
-    default: "zookeeper"
+  - variable: zk.servers
+    default: "{zookeeper-zookeeper}"
     description: "Zookeeper Host"
-    type: string
-    label: Zookeeper Host
+    type: array
+    label: Zookeeper Servers
 - variable: defaultImage
   default: "true"
   description: "Use default Docker images"
