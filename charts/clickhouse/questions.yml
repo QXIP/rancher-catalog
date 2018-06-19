@@ -22,10 +22,8 @@ questions:
     description: "Zookeeper Port"
     type: int
     label: Zookeeper Port
-  - variable: zk.servers
-    default: "{zookeeper-zookeeper}"
+  - variable: zk.servers = {}
     description: "Zookeeper Host"
-    type: edge
     label: Zookeeper Servers
 - variable: defaultImage
   default: "true"
