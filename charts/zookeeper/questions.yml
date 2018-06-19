@@ -1,0 +1,65 @@
+categories:
+- Database
+- NoSQL
+questions:
+- variable: defaultImage
+  default: "true"
+  description: "Use default Docker images"
+  label: Use Default Images
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "zookeeper"
+    description: "Zookeeper image name"
+    type: string
+    label: Zookeeper Image Name
+  - variable: image.tag
+    default: "3.3"
+    description: "Zookeeper image tag"
+    type: string
+    label: Image Tag
+- variable: service.type
+  default: "ClusterIP"
+  description: "Zookeeper K8s Service type"
+  type: enum
+  group: "Services and Load Balancing"
+  options:
+    - "ClusterIP"
+  required: true
+  label: Zookeeper Service Type
+- variable: persistence.enabled
+  default: "false"
+  description: "Enable persistent volume for Zookeeper"
+  type: boolean
+  required: true
+  label: Zookeeper Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Persistent Volume"
+  subquestions:
+  - variable: persistence.size
+    default: "2Gi"
+    description: "Zookeeper Persistent Volume Size"
+    type: string
+    label: Zookeeper Volume Size
+    required: true
+  - variable: persistence.storageClass
+    default: ""
+    description: "If undefined or set to null, using the default storageClass. Defaults to null."
+    type: storageclass
+    label: Storage Class for Zookeeper
+# - variable: ingress.enabled
+#   default: "true"
+#   description: "Expose app using Layer 7 Load Balancer - ingress"
+#   type: boolean
+#   label: Expose app using Layer 7 Load Balancer
+#   show_subquestion_if: true
+#   group: "Services and Load Balancing"
+#   subquestions:
+#   - variable: ingress.host
+#     default: "xip.io"
+#     description: "layer 7 Load Balancer hostname"
+#     type: hostname
+#     required: true
+#     label: Layer 7 Load Balancer Hostname

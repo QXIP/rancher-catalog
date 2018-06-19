@@ -3,9 +3,11 @@ categories:
 - NoSQL
 questions:
 - variable: replicaCount
-  default: "1"
+  default: ""
   description: "Clickhouse Nodes / Shards"
   type: int
+  min: 1
+  max: 9
   label: Clickhouse Node / Shards
 - variable: zk.enabled
   default: "false"
