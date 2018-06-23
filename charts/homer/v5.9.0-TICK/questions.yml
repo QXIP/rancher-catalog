@@ -1,6 +1,6 @@
 categories:
-- Database
-- NoSQL
+- Monitoring
+- Stack
 questions:
 - variable: service.type
   default: "ClusterIP"
