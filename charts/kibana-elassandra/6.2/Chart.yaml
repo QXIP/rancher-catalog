@@ -1,0 +1,8 @@
+apiVersion: v1
+description: Elassandra visualization platform
+name: kibana-elassandra
+version: 6.2.4-2
+appVersion: 6.2.4
+icon: https://i.imgur.com/0put5Hg.png
+sources:
+  - https://www.elastic.co/products/kibana
