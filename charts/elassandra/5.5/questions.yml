@@ -50,7 +50,7 @@ questions:
     type: string
     label: Elassandra Image Name
   - variable: image.tag
-    default: "latest"
+    default: "5.5.0.18"
     description: "Elassandra image tag"
     type: string
     label: Image Tag

@@ -1,0 +1,110 @@
+categories:
+- Database
+- NoSQL
+questions:
+- variable: config.cluster_name
+  default: "elassandra"
+  description: "Elassandra Cluster Name"
+  type: string
+  label: Elassandra Cluster Name
+- variable: config.rack_name
+  default: "RAC1"
+  description: "Elassandra Rack Name"
+  type: string
+  label: Elassandra Rack Name
+- variable: config.dc_name
+  default: "DC1"
+  description: "Elassandra DC Name"
+  type: string
+  label: Elassandra DC Name
+- variable: config.cluster_size
+  default: "3"
+  description: "Elassandra Cluster Nodes"
+  type: int
+  min: 3
+  max: 12
+  label: Elassandra Cluster Nodes
+- variable: config.seed_size
+  default: "2"
+  description: "Elassandra Seed Size (nodes-1)"
+  type: int
+  min: 2
+  max: 11
+  label: Elassandra Seed Size
+- variable: config.num_tokens
+  default: "256"
+  description: "Elassandra Cluster Tokens"
+  type: int
+  label: Elassandra Cluster Tokens
+- variable: defaultImage
+  default: "true"
+  description: "Use default Docker images"
+  label: Use Default Images
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repo
+    default: "strapdata/elassandra"
+    description: "Elassandra image name"
+    type: string
+    label: Elassandra Image Name
+  - variable: image.tag
+    default: "6.2.3.1"
+    description: "Elassandra image tag"
+    type: string
+    label: Image Tag
+- variable: service.type
+  default: "ClusterIP"
+  description: "Elassandra K8s Service type"
+  type: enum
+  group: "Services and Load Balancing"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+  required: true
+  label: Elassandra Service Type
+  # show_if: "ingress.enabled=false"
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: service.nodePort
+    default: ""
+    description: "NodePort port number(to set explicitly, choose port between 30000-32767)"
+    type: int
+    min: 30000
+    max: 32767
+    label: Service NodePort number
+- variable: persistence.enabled
+  default: "false"
+  description: "Enable persistent volume for Elassandra"
+  type: boolean
+  required: true
+  label: Elassandra Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Persistent Volume"
+  subquestions:
+  - variable: persistence.size
+    default: "8Gi"
+    description: "Elassandra Persistent Volume Size"
+    type: string
+    label: Elassandra Volume Size
+    required: true
+  - variable: persistence.storageClass
+    default: ""
+    description: "If undefined or set to null, using the default storageClass. Defaults to null."
+    type: storageclass
+    label: Storage Class for Elassandra
+# - variable: ingress.enabled
+#   default: "true"
+#   description: "Expose app using Layer 7 Load Balancer - ingress"
+#   type: boolean
+#   label: Expose app using Layer 7 Load Balancer
+#   show_subquestion_if: true
+#   group: "Services and Load Balancing"
+#   subquestions:
+#   - variable: ingress.host
+#     default: "xip.io"
+#     description: "layer 7 Load Balancer hostname"
+#     type: hostname
+#     required: true
+#     label: Layer 7 Load Balancer Hostname
