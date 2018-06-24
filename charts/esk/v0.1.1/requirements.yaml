@@ -1,0 +1,7 @@
+dependencies:
+  - name: kibana
+    version: 0.5.0
+    condition: kibana.enabled
+  - name: elasticsearch
+    version: 0.1.0
+    condition: elasticsearch.enabled
