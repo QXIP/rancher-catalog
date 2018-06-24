@@ -2,6 +2,22 @@ categories:
 - elasticsearch
 - logging
 questions:
+- variable: elasticsearch.master.replicas
+  default: 3
+  type: int
+  min: 1
+  max: 9
+  label: Node Replicas
+  group: "Cluster Settings"
+  description: "Cluster Nodes"
+- variable: elasticsearch.master.minimum_master_nodes
+  default: 1
+  type: int
+  min: 1
+  max: 3
+  label: Minimum Master Nodes
+  group: "Cluster Settings"
+  description: "Minimum Master Nodes"
 - variable: defaultImage
   default: "true"
   description: "Use default Docker image"
