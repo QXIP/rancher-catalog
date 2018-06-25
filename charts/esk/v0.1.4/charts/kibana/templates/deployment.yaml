@@ -45,7 +45,7 @@ spec:
             {{- end }}
         {{- end }}
         volumeMounts:
-           - name: {{ .Release.Name }}-sentinl
+           - name: {{ .Release.Name }}-sentinl-volume
              mountPath: /usr/share/kibana/config/kibana.yml
              subPath: kibana.yml
         ports:
@@ -76,3 +76,7 @@ spec:
     {{- end }}
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
+      volumes:
+        - name: {{ .Release.Name }}-sentinl-volume
+          configMap:
+            name: {{ .Release.Name }}-sentinl
