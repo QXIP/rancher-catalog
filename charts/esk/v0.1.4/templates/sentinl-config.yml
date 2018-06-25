@@ -18,7 +18,7 @@ data:
         email:
           active: {{ .Values.sentinl.email.active }}
           user: {{ .Values.sentinl.email.smtp_user }}
-          password: {{ .Values.sentinl.email.email.smtp_pass }}
+          password: {{ .Values.sentinl.email.smtp_pass }}
           host: {{ .Values.sentinl.email.smtp_server }}
           ssl: {{ .Values.sentinl.email.email.ssl }}
         report:
