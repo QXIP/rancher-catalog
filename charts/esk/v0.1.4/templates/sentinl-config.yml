@@ -24,4 +24,4 @@ data:
           ssl: {{ .Values.sentinl.email.ssl }}
         report:
           active: {{ .Values.sentinl.report.active }}
-          executable_path=/usr/bin/chrmium-browser
+          executable_path=/usr/bin/chromium-browser
