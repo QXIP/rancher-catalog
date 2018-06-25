@@ -13,6 +13,7 @@ data:
     server.name: kibana
     server.host: "0"
     elasticsearch.url: {{ template "esk.elasticsearch.url" . }}
+    vega.enableExternalUrls: false
     sentinl:
       settings:
         email:
@@ -23,3 +24,4 @@ data:
           ssl: {{ .Values.sentinl.email.ssl }}
         report:
           active: {{ .Values.sentinl.report.active }}
+          executable_path=/usr/bin/chrmium-browser
