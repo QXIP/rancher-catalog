@@ -16,11 +16,11 @@ data:
     sentinl:
       settings:
         email:
-          active: {{ template "esk.sentinl.email.active" . }}
-          user: {{ template "esk.sentinl.email.smtp_user" . }}
-          password: {{ template "esk.sentinl.email.smtp_pass" . }}
-          host: {{ template "esk.sentinl.email.smtp_server" . }}
-          ssl: {{ template "esk.sentinl.email.ssl" . }}
+          active: {{ default "false" .Values.sentinl.email.active }}
+          user: {{ default "" .Values.sentinl.email.smtp_user" }}
+          password: {{ default "" .Values.sentinl.email.email.smtp_pass" }}
+          host: {{ default "localhost" .Values.sentinl.email.smtp_server" }}
+          ssl: {{ default "false" .Values.sentinl.email.email.ssl" }}
         report:
-          active: {{ template "esk.sentinl.report.active" . }}
+          active: {{ default "true" .Values.sentinl.email.active" }}
           tmp_path: /tmp/
