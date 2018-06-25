@@ -23,4 +23,3 @@ data:
           ssl: {{ .Values.sentinl.email.ssl }}
         report:
           active: {{ .Values.sentinl.report.active }}
-          tmp_path: /tmp/
