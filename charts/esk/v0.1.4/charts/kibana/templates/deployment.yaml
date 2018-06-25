@@ -44,6 +44,10 @@ spec:
             name: {{ .Release.Name }}-kibana
             {{- end }}
         {{- end }}
+        volumeMounts:
+           - name: {{ .Release.Name }}-sentinl
+             mountPath: /usr/share/kibana/config
+             subPath: kibana.yml
         ports:
         - containerPort: {{ .Values.service.internalPort }}
           name: {{ template "kibana.name" . }}

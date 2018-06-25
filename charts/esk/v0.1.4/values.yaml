@@ -137,3 +137,12 @@ kibana:
   podAnnotations: {}
   replicaCount: 1
 
+sentinl:
+  email:
+    active: true
+    smtp_user: false
+    smtp_pass: false
+    smtp_server: false
+    ssl: false
+  report:
+    active: true

@@ -94,3 +94,43 @@ questions:
     type: hostname
     required: true
     label: Hostname
+# SENTINL settings
+- variable: sentinl.email.active
+  default: "true"
+  type: bool
+  label: Email Enabled
+  group: "Sentinl Settings"
+  description: "Email enabled"
+  show_subquestion_if: true
+  required: true
+  subquestions:
+  - variable: sentinl.email.smtp_user
+    default: "username"
+    description: "SMTP Username"
+    type: string
+    required: true
+    label: Username
+  - variable: sentinl.email.smtp_pass
+    default: "password"
+    description: "SMTP password"
+    type: string
+    required: true
+    label: Password
+  - variable: sentinl.email.smtp_server
+    default: "localhost"
+    description: "SMTP server"
+    type: string
+    required: true
+    label: Server
+  - variable: sentinl.email.ssl
+    default: "false"
+    description: "SMTP SSL"
+    type: bool
+    required: false
+    label: SSL
+- variable: sentinl.report.active
+  default: "true"
+  type: bool
+  label: Report Enabled
+  group: "Sentinl Settings"
+  description: "Report enabled"
