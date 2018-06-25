@@ -1,0 +1,8 @@
+apiVersion: v1
+description: Apache Zeppelin 
+name: zeppelin
+version: 0.7.3
+appVersion: 0.7.3
+icon: https://i.imgur.com/xobrTq9.jpg
+sources:
+  - https://zeppelin.apache.org

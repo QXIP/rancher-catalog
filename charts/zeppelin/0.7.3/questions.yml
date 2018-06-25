@@ -1,0 +1,67 @@
+categories:
+- Database
+- Frontend
+
+- variable: env.ELASTICSEARCH_HOST
+  default: "http://elasticsearch"
+  description: "Elasticsearch Host"
+  label: ES Host
+  type: string
+  group: "Elasticsearch"
+- variable: env.ELASTICSEARCH_PORT
+  default: "9200"
+  description: "Elasticsearch Port"
+  label: ES Port
+  type: int
+  group: "Elasticsearch"
+- variable: env.ELASTICSEARCH_RESULT_SIZE
+  default: "20"
+  description: "Elasticsearch Result Size"
+  label: ES Host
+  type: int
+  min: 10
+  max: 999
+  group: "Elasticsearch"
+- variable: env.ELASTICSEARCH_CLIENT_TYPE
+  default: "http"
+  description: "Elasticsearch Client"
+  label: http or transport
+  type: string
+  group: "Elasticsearch"
+
+- variable: env.CASSANDRA_CLUSTER
+  default: "Test Cluster"
+  description: "Cassandra Cluster"
+  label: Cassandra Cluster
+  type: string
+  group: "Cassandra"
+- variable: env.CASSANDRA_HOST
+  default: "localhost"
+  description: "Cassandra Host"
+  label: Cassandra Host
+  type: string
+  group: "Cassandra"
+- variable: env.CASSANDRA_NATIVE_PORT
+  default: "9042"
+  description: "Cassandra Port"
+  label: Cassandra Port
+  type: int
+  group: "Cassandra"
+- variable: env.CASSANDRA_KEYSPACE
+  default: "system"
+  description: "Cassandra Keyspace"
+  label: Cassandra Keyspace
+  type: string
+  group: "Cassandra"
+- variable: env.CASSANDRA_USERNAME
+  default: "none"
+  description: "Cassandra Username"
+  label: Cassandra Username
+  type: string
+  group: "Cassandra"
+- variable: env.CASSANDRA_PASSWORD
+  default: "none"
+  description: "Cassandra Password"
+  label: Cassandra Password
+  type: string
+  group: "Cassandra"
