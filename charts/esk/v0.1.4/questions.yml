@@ -97,7 +97,7 @@ questions:
 # SENTINL settings
 - variable: sentinl.email.active
   default: "true"
-  type: bool
+  type: boolean
   label: Email Enabled
   group: "Sentinl Settings"
   description: "Email enabled"
@@ -125,12 +125,12 @@ questions:
   - variable: sentinl.email.ssl
     default: "false"
     description: "SMTP SSL"
-    type: bool
+    type: boolean
     required: false
     label: SSL
 - variable: sentinl.report.active
   default: "true"
-  type: bool
+  type: boolean
   label: Report Enabled
   group: "Sentinl Settings"
   description: "Report enabled"
