@@ -20,7 +20,7 @@ data:
           user: {{ .Values.sentinl.email.smtp_user }}
           password: {{ .Values.sentinl.email.smtp_pass }}
           host: {{ .Values.sentinl.email.smtp_server }}
-          ssl: {{ .Values.sentinl.email.email.ssl }}
+          ssl: {{ .Values.sentinl.email.ssl }}
         report:
-          active: {{ .Values.sentinl.email.active }}
+          active: {{ .Values.sentinl.report.active }}
           tmp_path: /tmp/
