@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-sentinl
   labels:
-    app: {{ template "efk.name" . }}
+    app: {{ template "esk.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -12,15 +12,15 @@ data:
     # Injected Kibana config from HELM
     server.name: kibana
     server.host: "0"
-    elasticsearch.url: {{ template "efk.elasticsearch.url" . }}
+    elasticsearch.url: {{ template "esk.elasticsearch.url" . }}
     sentinl:
       settings:
         email:
-          active: {{ template "efk.sentinl.email.active" . }}
-          user: {{ template "efk.sentinl.email.smtp_user" . }}
-          password: {{ template "efk.sentinl.email.smtp_pass" . }}
-          host: {{ template "efk.sentinl.email.smtp_server" . }}
-          ssl: {{ template "efk.sentinl.email.ssl" . }}
+          active: {{ template "esk.sentinl.email.active" . }}
+          user: {{ template "esk.sentinl.email.smtp_user" . }}
+          password: {{ template "esk.sentinl.email.smtp_pass" . }}
+          host: {{ template "esk.sentinl.email.smtp_server" . }}
+          ssl: {{ template "esk.sentinl.email.ssl" . }}
         report:
-          active: {{ template "efk.sentinl.report.active" . }}
+          active: {{ template "esk.sentinl.report.active" . }}
           tmp_path: /tmp/
