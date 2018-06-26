@@ -1,0 +1,80 @@
+categories:
+- Database
+- NoSQL
+- Frontend
+questions:
+- variable: elasticsearch.enable
+  default: false
+  type: boolean
+  label: Enable Elasticsearch
+  description: "Enable Elasticsearch Client"
+  group: Elasticsearch
+  show_subquestion_if: true
+  subquestions:
+  - variable: elasticsearch.host
+    default: "127.0.0.1"
+    description: "IP/Host"
+    type: string
+    label: IP/Host
+    group: Elasticsearch
+  - variable: elasticsearch.type
+    default: "http"
+    description: "Interface Type"
+    type: string
+    label: Interface Type
+    group: Elasticsearch
+  - variable: elasticsearch.limit
+    default: "50"
+    description: "Query Limit"
+    type: int
+    min: 1
+    max: 999
+    label: Query Limit
+    group: Elasticsearch
+  - variable: elasticsearch.port
+    default: "9200"
+    description: "Port"
+    type: int
+    min: 9200
+    max: 9300
+    label: Port
+    group: Elasticsearch
+
+- variable: cassandra.enable
+  default: false
+  type: boolean
+  label: Enable Cassandra
+  description: "Enable Cassandra Client"
+  group: Cassandra
+  show_subquestion_if: true
+  subquestions:
+  - variable: cassandra.port
+    default: "9042"
+    description: "Port"
+    type: int
+    label: Port
+    group: Cassandra
+  - variable: cassandra.host
+    default: "127.0.0.1"
+    description: "Host"
+    type: string
+    label: Host
+    group: Cassandra
+  - variable: cassandra.keyspace
+    default: "default"
+    description: "Keyspace"
+    label: Keyspace
+    type: string
+    group: Cassandra
+  - variable: cassandra.username
+    default: ""
+    description: "Username"
+    label: Username
+    type: string
+    group: Cassandra
+  - variable: cassandra.password
+    default: ""
+    description: "Password"
+    label: Password
+    type: string
+    group: Cassandra

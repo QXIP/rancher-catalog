@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-zeppelin
+  labels:
+    app: {{ template "zeppelin.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "zeppelin.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: zeppelin
+          image: {{ .Values.zeppelin.image }}
+          ports:
+            - containerPort: 8080
+              name: web
+          env:
+            - name: ZEPPELIN_PORT
+              value: "8080"
+            - name: ZEPPELIN_JAVA_OPTS
+              value: >-
+                -Dspark.driver.memory={{ .Values.spark.driverMemory }}
+                -Dspark.executor.memory={{ .Values.spark.executorMemory }}
+{{- if .Values.elasticsearch }}
+            - name: ELASTICSEARCH_HOST
+              value: {{ .Values.elasticsearch.host }}
+            - name: ELASTICSEARCH_PORT
+              value: {{ .Values.elasticsearch.port }}
+            - name: ELASTICSEARCH_CLIENT_TYPE
+              value: {{ .Values.elasticsearch.type }}
+            - name: ELASTICSEARCH_RESULT_SIZE
+              value: {{ .Values.elasticsearch.size }}
+{{- end }}
+{{- if .Values.cassandra }}
+            - name: CASSANDRA_HOST
+              value: {{ .Values.cassandra.host }}
+            - name: CASSANDRA_NATIVE_PORT
+              value: {{ .Values.cassandra.port }}
+            - name: CASSANDRA_KEYSPACE
+              value: {{ .Values.cassandra.keyspace }}
+            - name: CASSANDRA_USERNAME
+              value: {{ .Values.cassandra.username }}
+            - name: CASSANDRA_PASSWORD
+              value: {{ .Values.cassandra.password }}
+{{- end }}
+          resources:
+{{ toYaml .Values.zeppelin.resources | indent 12 }} 
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 20
+            timeoutSeconds: 1
