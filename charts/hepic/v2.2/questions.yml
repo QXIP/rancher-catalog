@@ -1,0 +1,25 @@
+categories:
+- RTC
+- Monitoring
+- Frontend
+questions:
+- variable: env.CASSANDRA_HOST
+  default: "cassandra"
+  description: "Cassandra Host/IP"
+  type: string
+  label: Cassandra Host/IP
+- variable: env.INFLUXDB_HOST
+  default: "influxdb"
+  description: "InfluxDB Host/IP"
+  type: string
+  label: InfluxDB Host/IP
+- variable: env.LICENSE
+  default: ""
+  description: "HEPIC License Key"
+  type: string
+  label: HEPIC License Key
+- variable: service.hepPort
+  default: "9060"
+  description: "HEP Socket Port"
+  type: int
+  label: HEP Socket Port
