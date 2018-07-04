@@ -23,3 +23,8 @@ questions:
   description: "HEP Socket Port"
   type: int
   label: HEP Socket Port
+- variable: ingress.enable
+  default: "true"
+  description: "Ingress"
+  type: boolean
+  label: Ingress
