@@ -17,11 +17,11 @@ spec:
   - port: {{ .Values.service.hepPort }}
     targetPort: 9063
     protocol: UDP
-    name: "HEP UDP"
+    name: "hep-udp"
   - port: {{ .Values.service.hepPort }}
     targetPort: 9062
     protocol: TCP
-    name: "HEP TCP"
+    name: "hep-tcp"
   selector:
     app: {{ template "name" . }}
     release: {{ .Release.Name }}

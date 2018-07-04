@@ -1,6 +1,6 @@
 name: elassandra
-version: 6.2
-appVersion: 6.2
+version: 6.2.3
+appVersion: 6.2.3
 icon: https://github.com/strapdata/elassandra/raw/v5.5.0-strapdata/elassandra-logo.png
 description: Elassandra = Elasticsearch + Cassandra
   Apache Cassandra is a free and open-source distributed database management
