@@ -31,10 +31,5 @@ spec:
         ports:
         - name: http
           containerPort: {{ .Values.service.internalPort }}
-        livenessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.service.internalPort }}
-          initialDelaySeconds: 180
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
