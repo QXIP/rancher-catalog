@@ -24,7 +24,7 @@ questions:
   type: int
   label: HEP Socket Port
 - variable: ingress.enable
-  default: "true"
+  default: "false"
   description: "Ingress"
   type: boolean
   label: Ingress
