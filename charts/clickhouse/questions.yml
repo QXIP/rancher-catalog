@@ -109,14 +109,14 @@ questions:
   show_subquestion_if: true
   group: "User Authentication"
   subquestions:
-  - variable: users.key1.name
+#  - variable: users.key1.name
+#    default: "admin"
+#    description: "Clickhouse Admin User"
+#    type: string
+#    label: Clickhouse Admin User
+#    required: true
+  - variable: security.profiles.default.password
     default: "admin"
-    description: "Clickhouse Admin User"
+    description: "Clickhouse Default Password"
     type: string
-    label: Clickhouse Admin User
-    required: true
-  - variable: users.key1.password
-    default: "admin"
-    description: "Clickhouse Admin Password"
-    type: string
-    label: Clickhouse Admin Password
+    label: Clickhouse Default Password
